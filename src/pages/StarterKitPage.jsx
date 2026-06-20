@@ -1,0 +1,128 @@
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
+import GlassCard from '../components/common/GlassCard'
+import Button from '../components/common/Button'
+import AnimatedGradientBg from '../components/decorative/AnimatedGradientBg'
+import kit from '../data/starterKit.json'
+import { logEvent } from '../utils/eventLogger'
+
+const SECTIONS = [
+  { key: 'tips', icon: Lightbulb },
+  { key: 'costGuide', icon: Wallet },
+  { key: 'emergency', icon: Phone },
+  { key: 'transport', icon: Bus }
+]
+
+export default function StarterKitPage() {
+  const { t } = useTranslation()
+  const { lang } = useLanguage()
+  const [open, setOpen] = useState('tips')
+  const [toast, setToast] = useState('')
+
+  useEffect(() => { logEvent('screen_view', 'starter_kit') }, [])
+
+  const copy = async (text) => {
+    try { await navigator.clipboard.writeText(text) } catch { /* ignore */ }
+    setToast(t('common.copied'))
+    setTimeout(() => setToast(''), 1800)
+  }
+
+  const openApp = (item) => {
+    logEvent('open_transport', item.name)
+    if (item.deeplink) {
+      window.location.href = item.deeplink
+      setTimeout(() => copy(item.address), 400)
+    } else {
+      copy(item.address)
+    }
+  }
+
+  return (
+    <section className="relative overflow-hidden py-10">
+      <AnimatedGradientBg />
+      <div className="container-app relative z-10 max-w-2xl">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('starterKit.title')}</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-7">{t('starterKit.subtitle')}</p>
+
+        <div className="space-y-3">
+          {SECTIONS.map(({ key, icon: Icon }) => {
+            const data = kit[key]
+            const isOpen = open === key
+            return (
+              <GlassCard key={key} className="overflow-hidden">
+                <button onClick={() => setOpen(isOpen ? '' : key)} className="w-full flex items-center justify-between p-4">
+                  <span className="flex items-center gap-3 font-semibold text-gray-900 dark:text-white">
+                    <span className="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white"><Icon size={17} /></span>
+                    {data[lang] || data.id}
+                  </span>
+                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }}><ChevronDown size={18} className="text-gray-400" /></motion.span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                      <div className="px-4 pb-4">
+                        {key === 'tips' && (
+                          <ul className="space-y-2">
+                            {data.items.map((it, i) => (
+                              <li key={i} className="text-sm text-gray-600 dark:text-gray-300 flex gap-2">
+                                <span className="text-brand-500 mt-0.5">•</span> {it[lang] || it.id}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {(key === 'costGuide' || key === 'emergency') && (
+                          <ul className="divide-y divide-gray-200/60 dark:divide-white/10">
+                            {data.items.map((it, i) => (
+                              <li key={i} className="flex justify-between py-2 text-sm">
+                                <span className="text-gray-600 dark:text-gray-300">{lang === 'en' ? it.label_en : it.label_id}</span>
+                                <span className="font-semibold text-gray-900 dark:text-white">{it.value}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {key === 'transport' && (
+                          <div className="space-y-2">
+                            {data.items.map((it, i) => (
+                              <div key={i} className="flex items-center justify-between rounded-2xl border border-gray-200 dark:border-gray-700 p-3">
+                                <div>
+                                  <div className="font-semibold text-sm text-gray-900 dark:text-white">{it.name}</div>
+                                  <div className="text-xs text-gray-500 dark:text-gray-400">{it.fallback}</div>
+                                </div>
+                                <div className="flex gap-1.5">
+                                  {it.deeplink && (
+                                    <Button variant="secondary" className="!py-1.5 !px-3 !text-xs" onClick={() => openApp(it)}>
+                                      <ExternalLink size={13} /> {t('starterKit.openApp')}
+                                    </Button>
+                                  )}
+                                  <Button variant="ghost" className="!py-1.5 !px-3 !text-xs" onClick={() => copy(it.address)}>
+                                    <Copy size={13} /> {t('starterKit.copyAddress')}
+                                  </Button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </GlassCard>
+            )
+          })}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {toast && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 rounded-full bg-gray-900 text-white text-sm px-4 py-2 shadow-xl">
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  )
+}

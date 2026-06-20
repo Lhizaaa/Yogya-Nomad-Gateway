@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t-1",
+    "name": "Aisyah R.",
+    "role_id": "Remote Designer dari Singapura",
+    "role_en": "Remote Designer from Singapore",
+    "rating": 5,
+    "quote_id": "Touchdown Mode menyelamatkan 48 jam pertama saya. Langsung dapat WiFi dan cafe kerja tanpa bingung.",
+    "quote_en": "Touchdown Mode saved my first 48 hours. Found WiFi and a work cafe instantly, no confusion."
+  },
+  {
+    "id": "t-2",
+    "name": "David K.",
+    "role_id": "Software Engineer dari Australia",
+    "role_en": "Software Engineer from Australia",
+    "rating": 5,
+    "quote_id": "Perimeter Map sangat akurat. Badge Nomad-Tested bikin saya percaya kecepatan WiFi-nya.",
+    "quote_en": "The Perimeter Map is spot on. The Nomad-Tested badge made me trust the WiFi speeds."
+  },
+  {
+    "id": "t-3",
+    "name": "Mei L.",
+    "role_id": "Content Creator dari Malaysia",
+    "role_en": "Content Creator from Malaysia",
+    "rating": 4,
+    "quote_id": "Artikel Kulon Progo-nya membantu saya menjelajah sela-sela waktu kerja. Kalibiru juara!",
+    "quote_en": "The Kulon Progo articles helped me explore between work sessions. Kalibiru is a winner!"
+  },
+  {
+    "id": "t-4",
+    "name": "Raka P.",
+    "role_id": "Freelancer Lokal",
+    "role_en": "Local Freelancer",
+    "rating": 5,
+    "quote_id": "Akhirnya ada panduan biaya yang jujur. Starter Kit-nya benar-benar to the point.",
+    "quote_en": "Finally an honest cost guide. The Starter Kit is really to the point."
+  },
+  {
+    "id": "t-5",
+    "name": "Hana S.",
+    "role_id": "UX Researcher dari Jepang",
+    "role_en": "UX Researcher from Japan",
+    "rating": 5,
+    "quote_id": "Desainnya bersih dan cepat meski koneksi saya lambat. Mode gelapnya nyaman di mata.",
+    "quote_en": "Clean and fast even on my slow connection. The dark mode is easy on the eyes."
+  }
+]

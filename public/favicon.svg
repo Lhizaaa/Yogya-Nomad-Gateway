@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinGrad" x1="128" y1="40" x2="384" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9233"/>
+      <stop offset="0.55" stop-color="#FF7300"/>
+      <stop offset="1" stop-color="#CC5200"/>
+    </linearGradient>
+  </defs>
+  <path d="M256 40C153 40 70 123 70 226c0 121 150 230 178 248 7 5 9 5 16 0 28-18 178-127 178-248C442 123 359 40 256 40Z" fill="url(#pinGrad)"/>
+  <g stroke="#ffffff" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round">
+    <line x1="120" y1="250" x2="250" y2="250"/>
+    <line x1="150" y1="300" x2="300" y2="300"/>
+  </g>
+  <path d="M360 150c10-10 28-16 34-10s0 24-10 34l-44 44 14 86c1 6-1 9-6 12l-14 8-30-72-40 40 2 30c0 5-2 8-6 10l-10 5-18-44-44-18 5-10c2-4 5-6 10-6l30 2 40-40-72-30 8-14c3-5 6-7 12-6l86 14 44-44Z" fill="#ffffff"/>
+</svg>

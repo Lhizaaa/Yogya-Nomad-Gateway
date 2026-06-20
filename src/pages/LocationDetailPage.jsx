@@ -1,0 +1,146 @@
+import { useEffect, useMemo, useState } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { ArrowLeft, Navigation, Flag, Wifi, WifiOff, Plug, MapPin, Star, Clock, Send } from 'lucide-react'
+import { getLocations } from '../utils/locationStore'
+import { directionsUrl } from '../utils/distance'
+import { logEvent } from '../utils/eventLogger'
+import Button from '../components/common/Button'
+import Badge from '../components/common/Badge'
+import GlassCard from '../components/common/GlassCard'
+import Modal from '../components/common/Modal'
+
+const priceLabel = { low: '$ (Low)', medium: '$$ (Medium)', high: '$$$ (High)' }
+
+export default function LocationDetailPage() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { t } = useTranslation()
+  const loc = useMemo(() => getLocations().find((l) => l.id === id), [id])
+
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportDone, setReportDone] = useState(false)
+  const [speed, setSpeed] = useState('')
+  const [speedDone, setSpeedDone] = useState(false)
+
+  useEffect(() => { if (loc) logEvent('screen_view', `location:${loc.name}`) }, [loc])
+
+  if (!loc) {
+    return (
+      <div className="container-app py-20 text-center">
+        <p className="text-gray-500">404 — location not found.</p>
+        <Link to="/map" className="text-brand-500 font-semibold">{t('common.back')}</Link>
+      </div>
+    )
+  }
+
+  const getDirections = () => {
+    logEvent('get_directions', loc.name)
+    window.open(directionsUrl(loc.address), '_blank')
+  }
+
+  const submitReport = (kind) => {
+    logEvent('report_issue', `${loc.name}:${kind}`)
+    setReportDone(true)
+    setTimeout(() => { setReportOpen(false); setReportDone(false) }, 1400)
+  }
+
+  const submitSpeed = (e) => {
+    e.preventDefault()
+    if (!speed) return
+    logEvent('speed_test', `${loc.name}:${speed}mbps`)
+    setSpeedDone(true)
+  }
+
+  return (
+    <section className="py-8">
+      <div className="container-app max-w-2xl">
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
+          <ArrowLeft size={16} /> {t('common.back')}
+        </button>
+
+        <GlassCard className="p-6 sm:p-8">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white">{loc.name}</h1>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                <MapPin size={13} /> {loc.address}
+              </p>
+            </div>
+            <Badge tone={loc.open_now ? 'green' : 'gray'}>
+              <Clock size={11} /> {loc.open_now ? t('common.openNow') : t('common.closed')}
+            </Badge>
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            <Info label={t('detail.wifiSpeed')}>
+              {loc.wifi_speed_mbps != null ? (
+                <Badge tone="green"><Wifi size={11} /> {loc.wifi_speed_mbps} Mbps</Badge>
+              ) : (
+                <Badge tone="gray"><WifiOff size={11} /> {t('map.speedNotVerified')}</Badge>
+              )}
+            </Info>
+            <Info label={t('map.powerOutlet')}>
+              {loc.has_power_outlet ? <Badge tone="blue"><Plug size={11} /> ✓</Badge> : <Badge tone="gray">—</Badge>}
+            </Info>
+            <Info label={t('detail.priceRange')}><span className="font-semibold text-gray-800 dark:text-gray-100">{priceLabel[loc.price_range]}</span></Info>
+            <Info label="Rating">
+              {loc.rating ? <span className="inline-flex items-center gap-1 font-semibold"><Star size={13} className="text-brand-500 fill-brand-500" /> {loc.rating}</span> : '—'}
+            </Info>
+            <Info label={t('detail.lastUpdated')}><span className="text-sm">{loc.last_updated}</span></Info>
+            <Info label="Distance"><span className="text-sm font-semibold">{loc.distance_km} km</span></Info>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button onClick={getDirections}><Navigation size={16} /> {t('detail.getDirections')}</Button>
+            <Button variant="secondary" onClick={() => setReportOpen(true)}><Flag size={16} /> {t('detail.reportIssue')}</Button>
+          </div>
+
+          {loc.wifi_speed_mbps == null && (
+            <div className="mt-6 rounded-2xl bg-brand-50 dark:bg-white/5 border border-brand-200/60 dark:border-white/10 p-4">
+              {speedDone ? (
+                <p className="text-sm text-green-600 dark:text-green-400 font-medium">{t('detail.speedThanks')}</p>
+              ) : (
+                <form onSubmit={submitSpeed}>
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">{t('detail.helpSpeed')}</p>
+                  <div className="flex gap-2">
+                    <input
+                      type="number" min="0" value={speed} onChange={(e) => setSpeed(e.target.value)}
+                      placeholder={t('detail.speedPlaceholder')}
+                      className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
+                    />
+                    <Button type="submit"><Send size={15} /></Button>
+                  </div>
+                </form>
+              )}
+            </div>
+          )}
+        </GlassCard>
+      </div>
+
+      <Modal open={reportOpen} onClose={() => setReportOpen(false)} title={t('detail.reportTitle')}>
+        {reportDone ? (
+          <p className="text-green-600 dark:text-green-400 font-medium text-center py-4">{t('detail.reportThanks')}</p>
+        ) : (
+          <div className="space-y-2">
+            {[['closed', t('detail.issueClosed')], ['wifi', t('detail.issueWifi')], ['other', t('detail.issueOther')]].map(([k, label]) => (
+              <button key={k} onClick={() => submitReport(k)}
+                className="w-full text-left rounded-2xl border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm font-medium hover:border-brand-400 hover:bg-brand-50 dark:hover:bg-white/5 transition-colors">
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
+      </Modal>
+    </section>
+  )
+}
+
+function Info({ label, children }) {
+  return (
+    <div className="rounded-2xl bg-white/50 dark:bg-white/5 p-3 border border-white/40 dark:border-white/10">
+      <div className="text-[11px] text-gray-400 mb-1">{label}</div>
+      {children}
+    </div>
+  )
+}

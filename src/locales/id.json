@@ -1,0 +1,253 @@
+{
+  "brand": "Yogya Nomad Gateway",
+  "tagline": "Gerbang Digital Anda Menuju Yogyakarta",
+  "nav": {
+    "home": "Beranda",
+    "touchdown": "Touchdown",
+    "map": "Peta",
+    "starterKit": "Starter Kit",
+    "admin": "Admin"
+  },
+  "common": {
+    "all": "Semua",
+    "loading": "Memuat...",
+    "noData": "Belum ada data",
+    "back": "Kembali",
+    "close": "Tutup",
+    "submit": "Kirim",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "edit": "Edit",
+    "delete": "Hapus",
+    "add": "Tambah",
+    "search": "Cari",
+    "viewDetail": "Lihat Detail",
+    "loadMore": "Muat Lainnya",
+    "share": "Bagikan",
+    "copied": "Tersalin ke clipboard",
+    "minRead": "menit baca",
+    "openNow": "Buka Sekarang",
+    "closed": "Tutup"
+  },
+  "offline": {
+    "banner": "Mode offline terbatas. Hubungkan ke WiFi untuk fitur lengkap."
+  },
+  "hero": {
+    "badge": "Selamat datang di Kulon Progo",
+    "title": "Gerbang Digital Anda Menuju Yogyakarta",
+    "subtitle": "Asisten pribadi untuk freelancer & digital nomad yang baru mendarat di YIA. Temukan WiFi, workspace, dan transport dalam radius 15 km.",
+    "startTrip": "Mulai Perjalanan Baru",
+    "viewMap": "Perimeter Map",
+    "starterKit": "Nomad Starter Kit",
+    "summaryTitle": "Mendarat di YIA?",
+    "summaryDesc": "Susun rencana 48 jam pertama Anda dalam hitungan menit."
+  },
+  "arrivalTwin": {
+    "title": "YIA Digital Arrival Twin",
+    "subtitle": "Visualisasi kedatangan wisatawan & digital nomad",
+    "totalVisitor": "Total Visitor",
+    "thisMonth": "bulan ini",
+    "flightActivity": "Aktivitas Penerbangan",
+    "flightToday": "penerbangan hari ini",
+    "international": "Internasional",
+    "domestic": "Domestik",
+    "topOrigin": "Negara Asal Teratas",
+    "popularDest": "Destinasi Populer",
+    "airportStatus": "Status Bandara YIA",
+    "activeGate": "Gerbang Aktif",
+    "avgWaiting": "Rata-rata Tunggu",
+    "minutes": "mnt",
+    "normal": "Normal",
+    "fallbackNote": "Tampilan globe 3D dinonaktifkan (offline / hemat data). Menampilkan peta statis."
+  },
+  "features": {
+    "title": "Fitur Utama",
+    "subtitle": "Semua yang Anda butuhkan untuk memulai",
+    "touchdownTitle": "Touchdown Mode",
+    "touchdownDesc": "Rencana 48 jam pertama yang dipersonalisasi.",
+    "mapTitle": "Workspace Finder",
+    "mapDesc": "Cari WiFi, cafe, & coworking di sekitar YIA.",
+    "kitTitle": "Nomad Starter Kit",
+    "kitDesc": "Tips, biaya, kontak darurat & transport."
+  },
+  "analytics": {
+    "title": "Travel Analytics",
+    "subtitle": "Ringkasan data kedatangan secara publik",
+    "weeklyArrivals": "Kedatangan Mingguan",
+    "destShare": "Pangsa Destinasi"
+  },
+  "testimonials": {
+    "title": "Apa Kata Mereka",
+    "subtitle": "Pengalaman para nomad yang telah mendarat"
+  },
+  "articles": {
+    "title": "Jelajahi Kulon Progo",
+    "subtitle": "Wisata, kuliner, dan budaya di sekitar YIA",
+    "related": "Artikel Terkait",
+    "categories": {
+      "Wisata Alam": "Wisata Alam",
+      "Kuliner": "Kuliner",
+      "Budaya": "Budaya",
+      "Tips Nomad": "Tips Nomad"
+    }
+  },
+  "about": {
+    "title": "Tentang Kami",
+    "desc": "Platform digital untuk membantu freelancer, remote worker, dan wisatawan menemukan workspace, koneksi internet, transportasi, serta pengalaman terbaik setelah tiba di Yogyakarta International Airport.",
+    "value1Title": "Data Terverifikasi Lokal",
+    "value1Desc": "Lokasi diuji langsung oleh komunitas nomad.",
+    "value2Title": "Gratis Digunakan",
+    "value2Desc": "Tanpa biaya, tanpa langganan.",
+    "value3Title": "Didesain untuk Koneksi Lambat",
+    "value3Desc": "Ringan & dapat diakses offline."
+  },
+  "touchdown": {
+    "welcomeTitle": "Touchdown Mode",
+    "welcomeDesc": "Jawab 2 pertanyaan singkat dan kami akan menyusun rencana 48 jam pertama Anda di Yogyakarta.",
+    "start": "Mulai",
+    "q1": "Berapa budget harian Anda?",
+    "q2": "Preferensi workspace Anda?",
+    "budgetLow": "Hemat",
+    "budgetMedium": "Sedang",
+    "budgetHigh": "Premium",
+    "quietCafe": "Quiet Cafe",
+    "dedicatedDesk": "Dedicated Desk",
+    "generate": "Buat Rencana Saya",
+    "planTitle": "Rencana 48 Jam Anda",
+    "resumeTitle": "Lanjutkan rencana 48 jam Anda?",
+    "resumeDesc": "Anda berada di Langkah {{step}}.",
+    "resume": "Lanjutkan",
+    "restart": "Mulai Ulang",
+    "showWifi": "Tampilkan WiFi Terdekat",
+    "stepDone": "Selesai",
+    "progress": "Progres",
+    "steps": {
+      "connect": { "title": "Dapatkan Koneksi", "desc": "Temukan WiFi atau beli SIM card di sekitar YIA." },
+      "workspace": { "title": "Cari Workspace", "desc": "Pilih cafe tenang atau coworking sesuai preferensi Anda." },
+      "msme": { "title": "Jelajahi UMKM Lokal", "desc": "Cicipi geblek & kopi lokal khas Kulon Progo." },
+      "transport": { "title": "Rencanakan Transport", "desc": "Atur Gojek/Grab atau Kereta Bandara untuk mobilitas." },
+      "explore": { "title": "Jelajahi Sekitar", "desc": "Sempatkan ke Pantai Glagah atau Kalibiru saat senggang." }
+    }
+  },
+  "map": {
+    "title": "Perimeter Map",
+    "subtitle": "Workspace & WiFi dalam radius 15 km dari YIA",
+    "listView": "Tampilan List",
+    "mapView": "Tampilan Peta",
+    "filterType": "Tipe Workspace",
+    "openNow": "Buka Sekarang",
+    "bestMatch": "Cocok untuk Anda",
+    "types": {
+      "all": "Semua",
+      "cafe": "Quiet Cafe",
+      "coworking": "Dedicated Desk",
+      "wifi-spot": "WiFi Spot"
+    },
+    "nomadTested": "Nomad-Tested",
+    "speedNotVerified": "Kecepatan belum terverifikasi",
+    "viaGoogle": "Via Google Maps",
+    "powerOutlet": "Colokan",
+    "noBudgetMatch": "Tidak ada yang cocok dengan budget di sekitar. Menampilkan semua workspace dalam 5 km.",
+    "tooFar": "Tidak ada workspace di perimeter terdekat. Berikut opsi terbaik di pusat kota.",
+    "planTransport": "Rencanakan Transport",
+    "transportEst": "Estimasi: ~45 menit • Rp 80.000 dengan ride-hailing",
+    "useMyLocation": "Gunakan Lokasi Saya",
+    "mapRequiresKey": "Tampilan peta penuh (Google Places) membutuhkan koneksi internet & API key. Menampilkan peta OpenStreetMap gratis.",
+    "searchPlaceholder": "Cari coworking / wifi cafe terdekat...",
+    "openInGoogle": "Buka di Google Maps"
+  },
+  "detail": {
+    "wifiSpeed": "Kecepatan WiFi",
+    "priceRange": "Rentang Harga",
+    "hours": "Jam Buka",
+    "lastUpdated": "Diperbarui",
+    "getDirections": "Get Directions",
+    "reportIssue": "Laporkan Masalah",
+    "reportTitle": "Laporkan Masalah",
+    "issueClosed": "Lokasi Tutup",
+    "issueWifi": "Info WiFi Salah",
+    "issueOther": "Lainnya",
+    "reportThanks": "Terima kasih, laporan Anda tersimpan.",
+    "helpSpeed": "Bantu nomad lain — kirim hasil speed test",
+    "speedPlaceholder": "Kecepatan (Mbps)",
+    "speedThanks": "Terima kasih atas kontribusi Anda!",
+    "address": "Alamat"
+  },
+  "starterKit": {
+    "title": "Nomad Starter Kit",
+    "subtitle": "Bekal penting untuk hari-hari pertama Anda",
+    "openApp": "Buka Aplikasi",
+    "copyAddress": "Salin Alamat"
+  },
+  "footer": {
+    "desc": "Platform digital untuk membantu freelancer, remote worker, dan wisatawan menemukan workspace, koneksi internet, transportasi, serta pengalaman terbaik setelah tiba di Yogyakarta International Airport.",
+    "services": "Layanan",
+    "company": "Perusahaan",
+    "svc": {
+      "touchdown": "Touchdown Mode",
+      "globe": "3D Arrival Globe",
+      "finder": "Workspace Finder",
+      "kit": "Nomad Starter Kit",
+      "map": "Perimeter Map",
+      "analytics": "Travel Analytics"
+    },
+    "comp": {
+      "about": "Tentang Kami",
+      "docs": "Dokumentasi",
+      "career": "Karier",
+      "privacy": "Kebijakan Privasi",
+      "terms": "Syarat & Ketentuan"
+    },
+    "connected": "Terhubung dari Yogyakarta",
+    "smart": "Smart Arrival Intelligence",
+    "experience": "YIA Digital Experience",
+    "live": "Live Tourism Data Platform",
+    "copyright": "© 2026 Yogya Nomad Gateway",
+    "disclaimer": "⚠️ Informasi rekomendasi bersifat panduan. Pastikan melakukan verifikasi sebelum perjalanan."
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "login": "Masuk",
+    "password": "Kata Sandi",
+    "wrongPassword": "Kata sandi salah",
+    "loginHint": "Demo password: admin123",
+    "logout": "Keluar",
+    "tabs": {
+      "overview": "Ringkasan",
+      "locations": "Lokasi",
+      "events": "Log Event"
+    },
+    "stats": {
+      "totalLocations": "Total Lokasi",
+      "totalEvents": "Total Event",
+      "totalDirections": "Klik Get Directions",
+      "avgWifi": "Rata-rata WiFi (Mbps)"
+    },
+    "charts": {
+      "byType": "Jumlah Lokasi per Tipe",
+      "priceDist": "Distribusi Rentang Harga",
+      "dailyEvents": "Tren Event Harian",
+      "topClicked": "Top 5 Lokasi Paling Diklik"
+    },
+    "loc": {
+      "name": "Nama",
+      "type": "Tipe",
+      "address": "Alamat",
+      "distance": "Jarak (km)",
+      "wifi": "WiFi (Mbps)",
+      "power": "Colokan",
+      "price": "Harga",
+      "actions": "Aksi",
+      "addNew": "Tambah Lokasi",
+      "uploadCsv": "Upload CSV",
+      "resetData": "Reset ke Data Awal"
+    },
+    "event": {
+      "type": "Tipe Event",
+      "detail": "Detail",
+      "time": "Waktu",
+      "filterType": "Filter tipe",
+      "filterDate": "Filter tanggal"
+    }
+  }
+}

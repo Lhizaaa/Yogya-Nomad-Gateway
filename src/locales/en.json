@@ -1,0 +1,253 @@
+{
+  "brand": "Yogya Nomad Gateway",
+  "tagline": "Your Digital Gateway to Yogyakarta",
+  "nav": {
+    "home": "Home",
+    "touchdown": "Touchdown",
+    "map": "Map",
+    "starterKit": "Starter Kit",
+    "admin": "Admin"
+  },
+  "common": {
+    "all": "All",
+    "loading": "Loading...",
+    "noData": "No data yet",
+    "back": "Back",
+    "close": "Close",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "viewDetail": "View Detail",
+    "loadMore": "Load More",
+    "share": "Share",
+    "copied": "Copied to clipboard",
+    "minRead": "min read",
+    "openNow": "Open Now",
+    "closed": "Closed"
+  },
+  "offline": {
+    "banner": "Limited offline mode. Connect to WiFi for full features."
+  },
+  "hero": {
+    "badge": "Welcome to Kulon Progo",
+    "title": "Your Digital Gateway to Yogyakarta",
+    "subtitle": "A personal assistant for freelancers & digital nomads just landed at YIA. Find WiFi, workspaces, and transport within a 15 km radius.",
+    "startTrip": "Start New Trip",
+    "viewMap": "Perimeter Map",
+    "starterKit": "Nomad Starter Kit",
+    "summaryTitle": "Just landed at YIA?",
+    "summaryDesc": "Build your first 48-hour plan in minutes."
+  },
+  "arrivalTwin": {
+    "title": "YIA Digital Arrival Twin",
+    "subtitle": "Visualizing tourist & digital nomad arrivals",
+    "totalVisitor": "Total Visitors",
+    "thisMonth": "this month",
+    "flightActivity": "Flight Activity",
+    "flightToday": "flights today",
+    "international": "International",
+    "domestic": "Domestic",
+    "topOrigin": "Top Visitor Origin",
+    "popularDest": "Popular Destinations",
+    "airportStatus": "YIA Airport Status",
+    "activeGate": "Active Gates",
+    "avgWaiting": "Avg. Waiting",
+    "minutes": "min",
+    "normal": "Normal",
+    "fallbackNote": "3D globe disabled (offline / data saver). Showing static map."
+  },
+  "features": {
+    "title": "Core Features",
+    "subtitle": "Everything you need to get started",
+    "touchdownTitle": "Touchdown Mode",
+    "touchdownDesc": "A personalized first 48-hour plan.",
+    "mapTitle": "Workspace Finder",
+    "mapDesc": "Find WiFi, cafes & coworking around YIA.",
+    "kitTitle": "Nomad Starter Kit",
+    "kitDesc": "Tips, costs, emergency contacts & transport."
+  },
+  "analytics": {
+    "title": "Travel Analytics",
+    "subtitle": "A public snapshot of arrival data",
+    "weeklyArrivals": "Weekly Arrivals",
+    "destShare": "Destination Share"
+  },
+  "testimonials": {
+    "title": "What They Say",
+    "subtitle": "Experiences from nomads who have landed"
+  },
+  "articles": {
+    "title": "Explore Kulon Progo",
+    "subtitle": "Nature, food, and culture around YIA",
+    "related": "Related Articles",
+    "categories": {
+      "Wisata Alam": "Nature",
+      "Kuliner": "Culinary",
+      "Budaya": "Culture",
+      "Tips Nomad": "Nomad Tips"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "desc": "A digital platform helping freelancers, remote workers, and travelers find workspaces, internet connection, transport, and the best experiences after arriving at Yogyakarta International Airport.",
+    "value1Title": "Locally Verified Data",
+    "value1Desc": "Locations tested by the nomad community.",
+    "value2Title": "Free to Use",
+    "value2Desc": "No fees, no subscription.",
+    "value3Title": "Built for Slow Connections",
+    "value3Desc": "Lightweight & offline-accessible."
+  },
+  "touchdown": {
+    "welcomeTitle": "Touchdown Mode",
+    "welcomeDesc": "Answer 2 quick questions and we'll build your first 48-hour plan in Yogyakarta.",
+    "start": "Start",
+    "q1": "What's your daily budget?",
+    "q2": "Your workspace preference?",
+    "budgetLow": "Low",
+    "budgetMedium": "Medium",
+    "budgetHigh": "High",
+    "quietCafe": "Quiet Cafe",
+    "dedicatedDesk": "Dedicated Desk",
+    "generate": "Build My Plan",
+    "planTitle": "Your 48-Hour Plan",
+    "resumeTitle": "Resume your 48-hour plan?",
+    "resumeDesc": "You were on Step {{step}}.",
+    "resume": "Resume",
+    "restart": "Restart",
+    "showWifi": "Show WiFi Near Me",
+    "stepDone": "Done",
+    "progress": "Progress",
+    "steps": {
+      "connect": { "title": "Get Connected", "desc": "Find WiFi or buy a SIM card around YIA." },
+      "workspace": { "title": "Find a Workspace", "desc": "Pick a quiet cafe or coworking to match your preference." },
+      "msme": { "title": "Explore Local MSME", "desc": "Try geblek & local coffee from Kulon Progo." },
+      "transport": { "title": "Plan Transport", "desc": "Set up Gojek/Grab or the Airport Train for mobility." },
+      "explore": { "title": "Explore Around", "desc": "Visit Glagah Beach or Kalibiru when you have free time." }
+    }
+  },
+  "map": {
+    "title": "Perimeter Map",
+    "subtitle": "Workspaces & WiFi within 15 km of YIA",
+    "listView": "List View",
+    "mapView": "Map View",
+    "filterType": "Workspace Type",
+    "openNow": "Open Now",
+    "bestMatch": "Best Match",
+    "types": {
+      "all": "All",
+      "cafe": "Quiet Cafe",
+      "coworking": "Dedicated Desk",
+      "wifi-spot": "WiFi Spot"
+    },
+    "nomadTested": "Nomad-Tested",
+    "speedNotVerified": "Speed not verified",
+    "viaGoogle": "Via Google Maps",
+    "powerOutlet": "Power",
+    "noBudgetMatch": "No exact budget matches nearby. Showing all workspaces within 5 km.",
+    "tooFar": "No workspaces in immediate perimeter. Here are the top-rated options in the city centre.",
+    "planTransport": "Plan Transport",
+    "transportEst": "Estimate: ~45 min • Rp 80,000 by ride-hailing",
+    "useMyLocation": "Use My Location",
+    "mapRequiresKey": "Full map (Google Places) requires internet & an API key. Showing the free OpenStreetMap.",
+    "searchPlaceholder": "Search nearby coworking / wifi cafe...",
+    "openInGoogle": "Open in Google Maps"
+  },
+  "detail": {
+    "wifiSpeed": "WiFi Speed",
+    "priceRange": "Price Range",
+    "hours": "Opening Hours",
+    "lastUpdated": "Updated",
+    "getDirections": "Get Directions",
+    "reportIssue": "Report Issue",
+    "reportTitle": "Report Issue",
+    "issueClosed": "Location Closed",
+    "issueWifi": "Wrong WiFi Info",
+    "issueOther": "Other",
+    "reportThanks": "Thanks, your report has been saved.",
+    "helpSpeed": "Help others — submit a speed test result",
+    "speedPlaceholder": "Speed (Mbps)",
+    "speedThanks": "Thanks for your contribution!",
+    "address": "Address"
+  },
+  "starterKit": {
+    "title": "Nomad Starter Kit",
+    "subtitle": "Essentials for your first days",
+    "openApp": "Open App",
+    "copyAddress": "Copy Address"
+  },
+  "footer": {
+    "desc": "A digital platform helping freelancers, remote workers, and travelers find workspaces, internet connection, transport, and the best experiences after arriving at Yogyakarta International Airport.",
+    "services": "Services",
+    "company": "Company",
+    "svc": {
+      "touchdown": "Touchdown Mode",
+      "globe": "3D Arrival Globe",
+      "finder": "Workspace Finder",
+      "kit": "Nomad Starter Kit",
+      "map": "Perimeter Map",
+      "analytics": "Travel Analytics"
+    },
+    "comp": {
+      "about": "About Us",
+      "docs": "Documentation",
+      "career": "Careers",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    },
+    "connected": "Connected from Yogyakarta",
+    "smart": "Smart Arrival Intelligence",
+    "experience": "YIA Digital Experience",
+    "live": "Live Tourism Data Platform",
+    "copyright": "© 2026 Yogya Nomad Gateway",
+    "disclaimer": "⚠️ Recommendations are for guidance only. Always verify before travelling."
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "login": "Login",
+    "password": "Password",
+    "wrongPassword": "Wrong password",
+    "loginHint": "Demo password: admin123",
+    "logout": "Logout",
+    "tabs": {
+      "overview": "Overview",
+      "locations": "Locations",
+      "events": "Event Log"
+    },
+    "stats": {
+      "totalLocations": "Total Locations",
+      "totalEvents": "Total Events",
+      "totalDirections": "Get Directions Clicks",
+      "avgWifi": "Avg WiFi (Mbps)"
+    },
+    "charts": {
+      "byType": "Locations by Type",
+      "priceDist": "Price Range Distribution",
+      "dailyEvents": "Daily Event Trend",
+      "topClicked": "Top 5 Most Clicked Locations"
+    },
+    "loc": {
+      "name": "Name",
+      "type": "Type",
+      "address": "Address",
+      "distance": "Distance (km)",
+      "wifi": "WiFi (Mbps)",
+      "power": "Power",
+      "price": "Price",
+      "actions": "Actions",
+      "addNew": "Add Location",
+      "uploadCsv": "Upload CSV",
+      "resetData": "Reset to Initial Data"
+    },
+    "event": {
+      "type": "Event Type",
+      "detail": "Detail",
+      "time": "Time",
+      "filterType": "Filter type",
+      "filterDate": "Filter date"
+    }
+  }
+}

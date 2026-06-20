@@ -1,0 +1,35 @@
+{
+  "total_visitor": 245832,
+  "visitor_growth_percent": 12.4,
+  "flight_today": { "total": 128, "international": 34, "domestic": 94 },
+  "yia": { "lat": -7.9056, "lng": 110.0567, "name": "Yogyakarta Int'l Airport" },
+  "top_origin_countries": [
+    { "country": "Singapore", "code": "SG", "visitors": 12450, "lat": 1.3521, "lng": 103.8198 },
+    { "country": "Malaysia", "code": "MY", "visitors": 8320, "lat": 3.139, "lng": 101.6869 },
+    { "country": "Australia", "code": "AU", "visitors": 5210, "lat": -25.2744, "lng": 133.7751 },
+    { "country": "Japan", "code": "JP", "visitors": 4180, "lat": 35.6762, "lng": 139.6503 },
+    { "country": "South Korea", "code": "KR", "visitors": 3120, "lat": 37.5665, "lng": 126.978 },
+    { "country": "Netherlands", "code": "NL", "visitors": 2040, "lat": 52.3676, "lng": 4.9041 }
+  ],
+  "popular_destinations": [
+    { "name": "Malioboro", "percent": 42 },
+    { "name": "Borobudur", "percent": 31 },
+    { "name": "Prambanan", "percent": 18 },
+    { "name": "Pantai Selatan", "percent": 9 }
+  ],
+  "airport_status": {
+    "status": "Normal",
+    "active_gate": 24,
+    "total_gate": 28,
+    "avg_waiting_minutes": 18
+  },
+  "daily_arrivals": [
+    { "day": "Sen", "day_en": "Mon", "arrivals": 5200 },
+    { "day": "Sel", "day_en": "Tue", "arrivals": 4800 },
+    { "day": "Rab", "day_en": "Wed", "arrivals": 6100 },
+    { "day": "Kam", "day_en": "Thu", "arrivals": 5900 },
+    { "day": "Jum", "day_en": "Fri", "arrivals": 7200 },
+    { "day": "Sab", "day_en": "Sat", "arrivals": 8400 },
+    { "day": "Min", "day_en": "Sun", "arrivals": 7800 }
+  ]
+}

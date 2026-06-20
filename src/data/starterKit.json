@@ -1,0 +1,41 @@
+{
+  "tips": {
+    "id": "Tips Lokal",
+    "en": "Local Tips",
+    "items": [
+      { "id": "Selalu siapkan uang tunai kecil untuk warung & parkir di sekitar YIA.", "en": "Always keep small cash for local warungs & parking around YIA." },
+      { "id": "Sinyal seluler kuat di area bandara; ratai paket data 30 hari saat tiba.", "en": "Mobile signal is strong near the airport; grab a 30-day data SIM on arrival." },
+      { "id": "Kereta Bandara YIA menghubungkan langsung ke Stasiun Tugu Yogyakarta.", "en": "The YIA Airport Train connects directly to Yogyakarta Tugu Station." },
+      { "id": "Jam produktif terbaik di cafe lokal: 09.00–11.00 sebelum ramai.", "en": "Best focus hours at local cafes: 9–11 AM before it gets busy." }
+    ]
+  },
+  "costGuide": {
+    "id": "Panduan Biaya",
+    "en": "Cost Guide",
+    "items": [
+      { "label_id": "Transport (per hari)", "label_en": "Transport (per day)", "value": "Rp 50.000 – 120.000" },
+      { "label_id": "Makan (per hari)", "label_en": "Food (per day)", "value": "Rp 60.000 – 150.000" },
+      { "label_id": "Coworking (per hari)", "label_en": "Coworking (per day)", "value": "Rp 35.000 – 100.000" },
+      { "label_id": "Kopi + WiFi cafe", "label_en": "Coffee + WiFi cafe", "value": "Rp 20.000 – 45.000" }
+    ]
+  },
+  "emergency": {
+    "id": "Kontak Darurat",
+    "en": "Emergency Contacts",
+    "items": [
+      { "label_id": "Darurat Nasional", "label_en": "National Emergency", "value": "112" },
+      { "label_id": "Polisi", "label_en": "Police", "value": "110" },
+      { "label_id": "Ambulans", "label_en": "Ambulance", "value": "118" },
+      { "label_id": "Info Bandara YIA", "label_en": "YIA Airport Info", "value": "+62 274 4544444" }
+    ]
+  },
+  "transport": {
+    "id": "Transportasi",
+    "en": "Transport",
+    "items": [
+      { "name": "Gojek", "deeplink": "gojek://", "fallback": "Buka aplikasi Gojek", "address": "Yogyakarta International Airport (YIA), Temon, Kulon Progo" },
+      { "name": "Grab", "deeplink": "grab://", "fallback": "Buka aplikasi Grab", "address": "Yogyakarta International Airport (YIA), Temon, Kulon Progo" },
+      { "name": "DAMRI Airport Bus", "deeplink": "", "fallback": "Tiket di konter Terminal Kedatangan", "address": "YIA Arrival Terminal, Damri Counter" }
+    ]
+  }
+}
