@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft, Navigation, Flag, Wifi, WifiOff, Plug, MapPin, Star, Clock, Send } from 'lucide-react'
-import { getLocations } from '../utils/locationStore'
+import { ArrowLeft, Navigation, Flag, Wifi, WifiOff, Plug, MapPin, Star, Clock, Send, Bookmark, BookmarkCheck, CalendarPlus, CalendarCheck } from 'lucide-react'
+import { getLocations, getReviews, addReview } from '../utils/locationStore'
 import { directionsUrl } from '../utils/distance'
 import { logEvent } from '../utils/eventLogger'
+import { useApp } from '../context/AppContext'
 import Button from '../components/common/Button'
 import Badge from '../components/common/Badge'
 import GlassCard from '../components/common/GlassCard'
@@ -17,11 +18,16 @@ export default function LocationDetailPage() {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const loc = useMemo(() => getLocations().find((l) => l.id === id), [id])
+  const { isFavorite, toggleFavorite, isInItinerary, addToItinerary } = useApp()
 
   const [reportOpen, setReportOpen] = useState(false)
   const [reportDone, setReportDone] = useState(false)
   const [speed, setSpeed] = useState('')
   const [speedDone, setSpeedDone] = useState(false)
+  const [reviews, setReviews] = useState(() => (loc ? getReviews(loc.id) : { list: [], average: null, count: 0 }))
+  const [newRating, setNewRating] = useState(0)
+  const [newComment, setNewComment] = useState('')
+  const [reviewDone, setReviewDone] = useState(false)
 
   useEffect(() => { if (loc) logEvent('screen_view', `location:${loc.name}`) }, [loc])
 
@@ -52,6 +58,27 @@ export default function LocationDetailPage() {
     setSpeedDone(true)
   }
 
+  const onToggleFavorite = () => {
+    toggleFavorite(loc.id)
+    logEvent('toggle_favorite', loc.name)
+  }
+
+  const onAddItinerary = () => {
+    addToItinerary(loc.id)
+    logEvent('itinerary_add', loc.name)
+  }
+
+  const submitReview = (e) => {
+    e.preventDefault()
+    if (!newRating) return
+    logEvent('submit_review', `${loc.name}:${newRating}stars`)
+    setReviews(addReview(loc.id, { rating: newRating, comment: newComment.trim() }))
+    setReviewDone(true)
+    setNewRating(0)
+    setNewComment('')
+    setTimeout(() => setReviewDone(false), 1400)
+  }
+
   return (
     <section className="py-8">
       <div className="container-app max-w-2xl">
@@ -67,9 +94,25 @@ export default function LocationDetailPage() {
                 <MapPin size={13} /> {loc.address}
               </p>
             </div>
-            <Badge tone={loc.open_now ? 'green' : 'gray'}>
-              <Clock size={11} /> {loc.open_now ? t('common.openNow') : t('common.closed')}
-            </Badge>
+            <div className="flex items-center gap-2 shrink-0">
+              <Badge tone={loc.open_now ? 'green' : 'gray'}>
+                <Clock size={11} /> {loc.open_now ? t('common.openNow') : t('common.closed')}
+              </Badge>
+              <button
+                onClick={onAddItinerary}
+                title={isInItinerary(loc.id) ? t('itinerary.added') : t('itinerary.add')}
+                className={`p-2 rounded-full border transition-colors ${isInItinerary(loc.id) ? 'text-brand-500 border-brand-300' : 'text-gray-400 border-gray-200 dark:border-gray-700 hover:text-brand-500'}`}
+              >
+                {isInItinerary(loc.id) ? <CalendarCheck size={16} /> : <CalendarPlus size={16} />}
+              </button>
+              <button
+                onClick={onToggleFavorite}
+                title={isFavorite(loc.id) ? t('favorites.remove') : t('favorites.add')}
+                className={`p-2 rounded-full border transition-colors ${isFavorite(loc.id) ? 'text-brand-500 border-brand-300' : 'text-gray-400 border-gray-200 dark:border-gray-700 hover:text-brand-500'}`}
+              >
+                {isFavorite(loc.id) ? <BookmarkCheck size={16} className="fill-brand-500/20" /> : <Bookmark size={16} />}
+              </button>
+            </div>
           </div>
 
           <div className="mt-5 grid grid-cols-2 gap-3">
@@ -115,6 +158,58 @@ export default function LocationDetailPage() {
               )}
             </div>
           )}
+
+          <div className="mt-8 border-t border-gray-100 dark:border-white/10 pt-6">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="font-bold text-gray-900 dark:text-white">{t('review.title')}</h2>
+              {reviews.average != null && (
+                <span className="inline-flex items-center gap-1 text-sm font-semibold">
+                  <Star size={14} className="text-brand-500 fill-brand-500" /> {reviews.average}
+                  <span className="text-xs text-gray-400 font-normal ml-1">{t('review.reviewsCount', { count: reviews.count })}</span>
+                </span>
+              )}
+            </div>
+
+            {reviews.list.length === 0 ? (
+              <p className="text-sm text-gray-400 mb-4">{t('review.noReviews')}</p>
+            ) : (
+              <ul className="space-y-2 mb-4 max-h-56 overflow-y-auto">
+                {reviews.list.slice().reverse().map((r, i) => (
+                  <li key={i} className="rounded-xl bg-white/50 dark:bg-white/5 p-3 border border-white/40 dark:border-white/10">
+                    <span className="inline-flex items-center gap-0.5 text-brand-500 mb-1">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <Star key={s} size={12} className={s < r.rating ? 'fill-brand-500' : 'text-gray-300 dark:text-gray-600'} />
+                      ))}
+                    </span>
+                    {r.comment && <p className="text-sm text-gray-700 dark:text-gray-200">{r.comment}</p>}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {reviewDone ? (
+              <p className="text-sm text-green-600 dark:text-green-400 font-medium">{t('review.thanks')}</p>
+            ) : (
+              <form onSubmit={submitReview} className="space-y-2">
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-200">{t('review.yourRating')}</p>
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <button type="button" key={i} onClick={() => setNewRating(i + 1)}>
+                      <Star size={20} className={i < newRating ? 'text-brand-500 fill-brand-500' : 'text-gray-300 dark:text-gray-600'} />
+                    </button>
+                  ))}
+                </div>
+                <textarea
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  placeholder={t('review.commentPlaceholder')}
+                  rows={2}
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400"
+                />
+                <Button type="submit" disabled={!newRating}>{t('review.submit')}</Button>
+              </form>
+            )}
+          </div>
         </GlassCard>
       </div>
 

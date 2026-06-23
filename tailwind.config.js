@@ -35,12 +35,17 @@ export default {
         pulseDot: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.3' }
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' }
         }
       },
       animation: {
         gradientMove: 'gradientMove 12s ease infinite',
         blob: 'blob 14s ease-in-out infinite',
-        pulseDot: 'pulseDot 1.6s ease-in-out infinite'
+        pulseDot: 'pulseDot 1.6s ease-in-out infinite',
+        shimmer: 'shimmer 1.8s linear infinite'
       }
     }
   },

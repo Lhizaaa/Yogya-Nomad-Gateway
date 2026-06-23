@@ -1,12 +1,32 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Wifi, WifiOff, Plug, MapPin, Star, Clock } from 'lucide-react'
+import { Wifi, WifiOff, Plug, MapPin, Star, Clock, Bookmark, BookmarkCheck, CalendarPlus, CalendarCheck } from 'lucide-react'
 import Badge from '../common/Badge'
+import { useApp } from '../../context/AppContext'
+import { logEvent } from '../../utils/eventLogger'
 
 const priceLabel = { low: '$', medium: '$$', high: '$$$' }
 
 export default function LocationCard({ loc, bestMatch }) {
   const { t } = useTranslation()
+  const { isFavorite, toggleFavorite, isInItinerary, addToItinerary } = useApp()
+  const favorite = isFavorite(loc.id)
+  const inItinerary = isInItinerary(loc.id)
+
+  const onToggleFavorite = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite(loc.id)
+    logEvent('toggle_favorite', loc.name)
+  }
+
+  const onAddItinerary = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addToItinerary(loc.id)
+    logEvent('itinerary_add', loc.name)
+  }
+
   return (
     <Link to={`/map/${loc.id}`} className="block h-full">
       <div className="group h-full rounded-3xl bg-white dark:bg-gray-800/60 border border-gray-100 dark:border-white/10 p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
@@ -17,8 +37,24 @@ export default function LocationCard({ loc, bestMatch }) {
               <MapPin size={11} /> {loc.distance_km} km • {t(`map.types.${loc.type}`)}
             </p>
           </div>
-          {bestMatch && <Badge tone="brand">★ {t('map.bestMatch')}</Badge>}
+          <div className="flex items-center gap-1 shrink-0">
+            <button
+              onClick={onAddItinerary}
+              title={inItinerary ? t('itinerary.added') : t('itinerary.add')}
+              className={`p-1.5 rounded-full transition-colors ${inItinerary ? 'text-brand-500' : 'text-gray-400 hover:text-brand-500'}`}
+            >
+              {inItinerary ? <CalendarCheck size={16} /> : <CalendarPlus size={16} />}
+            </button>
+            <button
+              onClick={onToggleFavorite}
+              title={favorite ? t('favorites.remove') : t('favorites.add')}
+              className={`p-1.5 rounded-full transition-colors ${favorite ? 'text-brand-500' : 'text-gray-400 hover:text-brand-500'}`}
+            >
+              {favorite ? <BookmarkCheck size={16} className="fill-brand-500/20" /> : <Bookmark size={16} />}
+            </button>
+          </div>
         </div>
+        {bestMatch && <Badge tone="brand" className="mt-1.5">★ {t('map.bestMatch')}</Badge>}
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {loc.wifi_speed_mbps != null ? (

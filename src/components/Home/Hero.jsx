@@ -7,6 +7,7 @@ import FloatingShapes from '../decorative/FloatingShapes'
 import ParticleBackground from '../decorative/ParticleBackground'
 import GlassCard from '../common/GlassCard'
 import Button from '../common/Button'
+import WeatherWidget from './WeatherWidget'
 
 export default function Hero() {
   const { t } = useTranslation()
@@ -25,6 +26,10 @@ export default function Hero() {
           >
             <Sparkles size={13} /> {t('hero.badge')}
           </motion.span>
+
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.02 }} className="mt-3">
+            <WeatherWidget />
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}

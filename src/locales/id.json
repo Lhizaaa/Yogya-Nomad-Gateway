@@ -6,6 +6,8 @@
     "touchdown": "Touchdown",
     "map": "Peta",
     "starterKit": "Starter Kit",
+    "mySpots": "Spot Saya",
+    "itinerary": "Itinerary",
     "admin": "Admin"
   },
   "common": {
@@ -178,6 +180,62 @@
     "subtitle": "Bekal penting untuk hari-hari pertama Anda",
     "openApp": "Buka Aplikasi",
     "copyAddress": "Salin Alamat"
+  },
+  "review": {
+    "title": "Ulasan",
+    "average": "Rata-rata",
+    "noReviews": "Belum ada ulasan. Jadilah yang pertama!",
+    "yourRating": "Rating Anda",
+    "commentPlaceholder": "Bagikan pengalaman Anda di lokasi ini...",
+    "submit": "Kirim Ulasan",
+    "thanks": "Terima kasih atas ulasan Anda!",
+    "reviewsCount": "{{count}} ulasan"
+  },
+  "favorites": {
+    "add": "Simpan",
+    "remove": "Tersimpan",
+    "title": "Spot Saya",
+    "subtitle": "Lokasi yang telah Anda simpan",
+    "empty": "Belum ada spot tersimpan. Jelajahi Perimeter Map dan simpan favorit Anda."
+  },
+  "itinerary": {
+    "add": "Tambah ke Itinerary",
+    "added": "Di Itinerary",
+    "title": "Itinerary Saya",
+    "subtitle": "Susun rencana kunjungan lokasi Anda",
+    "empty": "Itinerary masih kosong. Tambahkan lokasi dari Perimeter Map.",
+    "moveUp": "Naikkan",
+    "moveDown": "Turunkan",
+    "remove": "Hapus",
+    "export": "Salin Itinerary",
+    "exported": "Itinerary disalin ke clipboard"
+  },
+  "budget": {
+    "title": "Kalkulator Budget Trip",
+    "subtitle": "Estimasi biaya harian berdasarkan gaya hidup Anda",
+    "days": "Jumlah Hari",
+    "tier": "Gaya Hidup",
+    "calculate": "Hitung Estimasi",
+    "total": "Total Estimasi",
+    "perDay": "per hari"
+  },
+  "weather": {
+    "title": "Cuaca di Kulon Progo",
+    "loading": "Memuat cuaca...",
+    "feelsLike": "Terasa seperti"
+  },
+  "search": {
+    "placeholder": "Cari lokasi, artikel, atau tips...",
+    "noResults": "Tidak ditemukan hasil",
+    "locations": "Lokasi",
+    "articles": "Artikel",
+    "starterKit": "Starter Kit"
+  },
+  "install": {
+    "title": "Pasang Yogya Nomad Gateway",
+    "desc": "Akses lebih cepat & offline dengan menginstal aplikasi ini di perangkat Anda.",
+    "install": "Pasang",
+    "dismiss": "Nanti Saja"
   },
   "footer": {
     "desc": "Platform digital untuk membantu freelancer, remote worker, dan wisatawan menemukan workspace, koneksi internet, transportasi, serta pengalaman terbaik setelah tiba di Yogyakarta International Airport.",

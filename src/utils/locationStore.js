@@ -1,6 +1,7 @@
 import seed from '../data/locations.json'
 
 const KEY = 'nomad_locations'
+const REVIEWS_KEY = 'nomad_reviews'
 
 export function getLocations() {
   try {
@@ -17,6 +18,35 @@ export function saveLocations(list) {
 export function resetLocations() {
   try { localStorage.removeItem(KEY) } catch { /* ignore */ }
   return seed
+}
+
+function loadReviewsMap() {
+  try {
+    const raw = localStorage.getItem(REVIEWS_KEY)
+    return raw ? JSON.parse(raw) : {}
+  } catch { return {} }
+}
+
+function saveReviewsMap(map) {
+  try { localStorage.setItem(REVIEWS_KEY, JSON.stringify(map)) } catch { /* ignore */ }
+}
+
+export function getReviews(locationId) {
+  const map = loadReviewsMap()
+  const list = map[locationId] || []
+  const average = list.length
+    ? Math.round((list.reduce((sum, r) => sum + r.rating, 0) / list.length) * 10) / 10
+    : null
+  return { list, average, count: list.length }
+}
+
+export function addReview(locationId, { rating, comment }) {
+  const map = loadReviewsMap()
+  const list = map[locationId] || []
+  const next = [...list, { rating, comment, ts: new Date().toISOString() }]
+  map[locationId] = next
+  saveReviewsMap(map)
+  return getReviews(locationId)
 }
 
 // Very small CSV parser: header row defines fields.

@@ -6,6 +6,8 @@
     "touchdown": "Touchdown",
     "map": "Map",
     "starterKit": "Starter Kit",
+    "mySpots": "My Spots",
+    "itinerary": "Itinerary",
     "admin": "Admin"
   },
   "common": {
@@ -178,6 +180,62 @@
     "subtitle": "Essentials for your first days",
     "openApp": "Open App",
     "copyAddress": "Copy Address"
+  },
+  "review": {
+    "title": "Reviews",
+    "average": "Average",
+    "noReviews": "No reviews yet. Be the first!",
+    "yourRating": "Your Rating",
+    "commentPlaceholder": "Share your experience at this location...",
+    "submit": "Submit Review",
+    "thanks": "Thanks for your review!",
+    "reviewsCount": "{{count}} reviews"
+  },
+  "favorites": {
+    "add": "Save",
+    "remove": "Saved",
+    "title": "My Spots",
+    "subtitle": "Locations you've saved",
+    "empty": "No saved spots yet. Explore the Perimeter Map and save your favorites."
+  },
+  "itinerary": {
+    "add": "Add to Itinerary",
+    "added": "In Itinerary",
+    "title": "My Itinerary",
+    "subtitle": "Plan out your location visits",
+    "empty": "Your itinerary is empty. Add locations from the Perimeter Map.",
+    "moveUp": "Move Up",
+    "moveDown": "Move Down",
+    "remove": "Remove",
+    "export": "Copy Itinerary",
+    "exported": "Itinerary copied to clipboard"
+  },
+  "budget": {
+    "title": "Trip Budget Calculator",
+    "subtitle": "Estimate daily costs based on your lifestyle",
+    "days": "Number of Days",
+    "tier": "Lifestyle",
+    "calculate": "Calculate Estimate",
+    "total": "Total Estimate",
+    "perDay": "per day"
+  },
+  "weather": {
+    "title": "Weather in Kulon Progo",
+    "loading": "Loading weather...",
+    "feelsLike": "Feels like"
+  },
+  "search": {
+    "placeholder": "Search locations, articles, or tips...",
+    "noResults": "No results found",
+    "locations": "Locations",
+    "articles": "Articles",
+    "starterKit": "Starter Kit"
+  },
+  "install": {
+    "title": "Install Yogya Nomad Gateway",
+    "desc": "Get faster, offline access by installing this app on your device.",
+    "install": "Install",
+    "dismiss": "Maybe Later"
   },
   "footer": {
     "desc": "A digital platform helping freelancers, remote workers, and travelers find workspaces, internet connection, transport, and the best experiences after arriving at Yogyakarta International Airport.",

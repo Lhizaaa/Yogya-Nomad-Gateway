@@ -1,12 +1,16 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Bookmark, CalendarCheck } from 'lucide-react'
 import Logo from './Logo'
+import SearchBar from './SearchBar'
 import ThemeToggle from '../common/ThemeToggle'
 import LanguageToggle from '../common/LanguageToggle'
+import { useApp } from '../../context/AppContext'
 
 export default function Navbar() {
   const { t } = useTranslation()
   const { pathname } = useLocation()
+  const { favorites, itinerary } = useApp()
 
   const links = [
     { to: '/', label: t('nav.home') },
@@ -35,6 +39,19 @@ export default function Navbar() {
           ))}
         </div>
         <div className="flex items-center gap-1 sm:gap-2">
+          <SearchBar />
+          <Link to="/itinerary" title={t('nav.itinerary')} className="relative p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <CalendarCheck size={18} />
+            {itinerary.length > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-4 h-4 rounded-full bg-brand-500 text-white text-[9px] font-bold">{itinerary.length}</span>
+            )}
+          </Link>
+          <Link to="/my-spots" title={t('nav.mySpots')} className="relative p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <Bookmark size={18} />
+            {favorites.length > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-4 h-4 rounded-full bg-brand-500 text-white text-[9px] font-bold">{favorites.length}</span>
+            )}
+          </Link>
           <LanguageToggle />
           <ThemeToggle />
         </div>

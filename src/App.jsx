@@ -6,6 +6,7 @@ import BottomNav from './components/Layout/BottomNav'
 import Footer from './components/Layout/Footer'
 import BatikBorder from './components/decorative/BatikBorder'
 import OfflineBanner from './components/common/OfflineBanner'
+import InstallBanner from './components/common/InstallBanner'
 
 import Home from './pages/Home'
 import TouchdownPage from './pages/TouchdownPage'
@@ -13,6 +14,8 @@ import PerimeterMapPage from './pages/PerimeterMapPage'
 import LocationDetailPage from './pages/LocationDetailPage'
 import StarterKitPage from './pages/StarterKitPage'
 import ArticleDetailPage from './pages/ArticleDetailPage'
+import MySpotsPage from './pages/MySpotsPage'
+import ItineraryPage from './pages/ItineraryPage'
 
 const AdminPage = lazy(() => import('./pages/AdminPage'))
 
@@ -49,6 +52,8 @@ export default function App() {
             <Route path="/map/:id" element={<Page><LocationDetailPage /></Page>} />
             <Route path="/starter-kit" element={<Page><StarterKitPage /></Page>} />
             <Route path="/articles/:id" element={<Page><ArticleDetailPage /></Page>} />
+            <Route path="/my-spots" element={<Page><MySpotsPage /></Page>} />
+            <Route path="/itinerary" element={<Page><ItineraryPage /></Page>} />
             <Route
               path="/admin"
               element={
@@ -63,6 +68,7 @@ export default function App() {
 
       <Footer />
       <BottomNav />
+      <InstallBanner />
     </div>
   )
 }
