@@ -38,10 +38,8 @@ export default function App() {
   return (
     <div className="relative min-h-screen flex flex-col">
       <BatikBorder />
-      <div className="relative z-20">
-        <OfflineBanner />
-        <Navbar />
-      </div>
+      <OfflineBanner />
+      <Navbar />
 
       <div className="relative z-10 flex-1">
         <AnimatePresence mode="wait">
