@@ -1,10 +1,14 @@
-import { createContext, useContext, useCallback } from 'react'
+import { createContext, useContext, useCallback, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const LanguageContext = createContext(null)
 
 export function LanguageProvider({ children }) {
   const { i18n } = useTranslation()
+
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', i18n.language)
+  }, [i18n.language])
 
   const setLang = useCallback((lng) => {
     i18n.changeLanguage(lng)

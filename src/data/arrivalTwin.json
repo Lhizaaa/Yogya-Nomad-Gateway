@@ -12,10 +12,10 @@
     { "country": "Netherlands", "code": "NL", "visitors": 2040, "lat": 52.3676, "lng": 4.9041 }
   ],
   "popular_destinations": [
-    { "name": "Malioboro", "percent": 42 },
-    { "name": "Borobudur", "percent": 31 },
-    { "name": "Prambanan", "percent": 18 },
-    { "name": "Pantai Selatan", "percent": 9 }
+    { "name": "Kalibiru", "percent": 42 },
+    { "name": "Pantai Glagah", "percent": 31 },
+    { "name": "Waduk Sermo", "percent": 18 },
+    { "name": "Goa Kiskendo", "percent": 9 }
   ],
   "airport_status": {
     "status": "Normal",

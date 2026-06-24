@@ -10,10 +10,13 @@ const items = [
   { Icon: Plane, top: '80%', left: '45%', size: 22, dur: 13 }
 ]
 
-export default function FloatingShapes({ subtle = false }) {
+export default function FloatingShapes({ subtle = false, fixed = false }) {
   const reduce = useReducedMotion()
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+    <div
+      className={`pointer-events-none overflow-hidden ${fixed ? 'fixed inset-0 -z-10' : 'absolute inset-0 z-0'}`}
+      aria-hidden="true"
+    >
       {items.map(({ Icon, top, left, size, dur }, i) => (
         <motion.div
           key={i}

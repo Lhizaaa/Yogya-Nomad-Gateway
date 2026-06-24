@@ -2,9 +2,6 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Plane, MapPin, Backpack, Sparkles } from 'lucide-react'
-import AnimatedGradientBg from '../decorative/AnimatedGradientBg'
-import FloatingShapes from '../decorative/FloatingShapes'
-import ParticleBackground from '../decorative/ParticleBackground'
 import GlassCard from '../common/GlassCard'
 import Button from '../common/Button'
 import WeatherWidget from './WeatherWidget'
@@ -13,10 +10,6 @@ export default function Hero() {
   const { t } = useTranslation()
   return (
     <section className="relative overflow-hidden pt-12 pb-16 sm:pt-16 sm:pb-24">
-      <AnimatedGradientBg />
-      <ParticleBackground />
-      <FloatingShapes />
-
       <div className="container-app relative z-10 grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <motion.span

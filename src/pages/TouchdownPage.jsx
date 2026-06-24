@@ -6,7 +6,6 @@ import { Wifi, Laptop, Coffee, Bus, Compass, Check, Wallet, RotateCcw, Play } fr
 import { useApp } from '../context/AppContext'
 import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
-import AnimatedGradientBg from '../components/decorative/AnimatedGradientBg'
 import WeatherWidget from '../components/Home/WeatherWidget'
 import { logEvent } from '../utils/eventLogger'
 
@@ -43,7 +42,6 @@ export default function TouchdownPage() {
   return (
     <div className="relative">
       <section className="relative overflow-hidden py-10">
-        <AnimatedGradientBg />
         <div className="container-app relative z-10 max-w-2xl">
           <div className="mb-5"><WeatherWidget /></div>
           <AnimatePresence mode="wait">

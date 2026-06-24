@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Github, Twitter, Instagram, Linkedin, Plane, Globe } from 'lucide-react'
+import { Plane, Globe } from 'lucide-react'
 import Logo from './Logo'
 import Reveal from '../common/Reveal'
 
@@ -22,8 +22,6 @@ export default function Footer() {
     { label: t('footer.comp.privacy'), to: '#' },
     { label: t('footer.comp.terms'), to: '#' }
   ]
-  const socials = [Instagram, Twitter, Github, Linkedin]
-
   return (
     <footer className="relative mt-16 pb-24 md:pb-10 px-4">
       <Reveal>
@@ -73,19 +71,12 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Social & badges */}
+            {/* Badges */}
             <div>
-              <div className="flex gap-2 mb-4">
-                {socials.map((Icon, i) => (
-                  <a key={i} href="#" aria-label="social" className="grid place-items-center w-9 h-9 rounded-full bg-white/60 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-brand-500 hover:text-white transition-colors">
-                    <Icon size={16} />
-                  </a>
-                ))}
-              </div>
               <div className="flex flex-wrap gap-2">
-                <Badge>📍 {t('footer.connected')}</Badge>
-                <Badge>✈️ {t('footer.smart')}</Badge>
-                <Badge>🌐 {t('footer.experience')}</Badge>
+                <Badge>{t('footer.connected')}</Badge>
+                <Badge>{t('footer.smart')}</Badge>
+                <Badge>{t('footer.experience')}</Badge>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 px-2.5 py-1 text-[11px] font-medium border border-green-500/20">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulseDot" />
                   {t('footer.live')}

@@ -1,7 +1,11 @@
 // Animated gradient + slow moving blurred blobs behind content.
-export default function AnimatedGradientBg({ className = '' }) {
+// fixed=true pins it behind the whole viewport (used once at app level) instead of one section.
+export default function AnimatedGradientBg({ className = '', fixed = false }) {
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden z-0 ${className}`} aria-hidden="true">
+    <div
+      className={`pointer-events-none overflow-hidden ${fixed ? 'fixed inset-0 -z-10' : 'absolute inset-0 z-0'} ${className}`}
+      aria-hidden="true"
+    >
       <div className="absolute inset-0 bg-animated-gradient animate-gradientMove opacity-70 dark:opacity-40" />
       <div className="absolute -top-20 -left-10 h-72 w-72 rounded-full bg-brand-400/40 blur-3xl animate-blob" />
       <div className="absolute top-10 right-0 h-80 w-80 rounded-full bg-brand-300/30 blur-3xl animate-blob" style={{ animationDelay: '3s' }} />

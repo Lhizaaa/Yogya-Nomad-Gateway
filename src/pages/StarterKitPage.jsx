@@ -5,7 +5,6 @@ import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink } from '
 import { useLanguage } from '../context/LanguageContext'
 import GlassCard from '../components/common/GlassCard'
 import Button from '../components/common/Button'
-import AnimatedGradientBg from '../components/decorative/AnimatedGradientBg'
 import kit from '../data/starterKit.json'
 import { logEvent } from '../utils/eventLogger'
 
@@ -42,7 +41,6 @@ export default function StarterKitPage() {
 
   return (
     <section className="relative overflow-hidden py-10">
-      <AnimatedGradientBg />
       <div className="container-app relative z-10 max-w-2xl">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('starterKit.title')}</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-7">{t('starterKit.subtitle')}</p>

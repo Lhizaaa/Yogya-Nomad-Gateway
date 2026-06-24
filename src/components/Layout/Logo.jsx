@@ -5,7 +5,7 @@ export default function Logo({ withText = true, size = 36, to = '/' }) {
   const { t } = useTranslation()
   const content = (
     <span className="flex items-center gap-2.5">
-      <img src="/logo.svg" alt="Yogya Nomad Gateway" width={size} height={size} className="drop-shadow-sm" />
+      <img src="/logo-new.png" alt="Yogya Nomad Gateway" width={size} height={size} className="rounded-full object-cover drop-shadow-sm" />
       {withText && (
         <span className="font-extrabold leading-tight text-gray-900 dark:text-white">
           <span className="text-brand-500">Yogya</span> Nomad

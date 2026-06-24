@@ -12,8 +12,8 @@ i18n.use(initReactI18next).init({
     id: { translation: id },
     en: { translation: en }
   },
-  lng: stored || 'id',
-  fallbackLng: 'id',
+  lng: stored || 'en',
+  fallbackLng: 'en',
   interpolation: { escapeValue: false }
 })
 

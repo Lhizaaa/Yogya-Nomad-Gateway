@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 
 // Lightweight custom <canvas> particle field (no heavy dependency).
 // Respects prefers-reduced-motion (renders a static frame).
-export default function ParticleBackground({ count = 36, className = '' }) {
+// fixed=true sizes to the viewport and pins behind everything (used once at app level).
+export default function ParticleBackground({ count = 36, className = '', fixed = false }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -15,9 +16,14 @@ export default function ParticleBackground({ count = 36, className = '' }) {
     let w = 0, h = 0
 
     const resize = () => {
-      const parent = canvas.parentElement
-      w = canvas.width = parent.clientWidth
-      h = canvas.height = parent.clientHeight
+      if (fixed) {
+        w = canvas.width = window.innerWidth
+        h = canvas.height = window.innerHeight
+      } else {
+        const parent = canvas.parentElement
+        w = canvas.width = parent.clientWidth
+        h = canvas.height = parent.clientHeight
+      }
     }
 
     const init = () => {
@@ -73,13 +79,13 @@ export default function ParticleBackground({ count = 36, className = '' }) {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', onResize)
     }
-  }, [count])
+  }, [count, fixed])
 
   return (
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 z-0 ${className}`}
+      className={`pointer-events-none ${fixed ? 'fixed inset-0 -z-10' : 'absolute inset-0 z-0'} ${className}`}
     />
   )
 }

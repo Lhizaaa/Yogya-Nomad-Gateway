@@ -20,8 +20,8 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-200/60 dark:border-white/10 bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl transition-colors">
-      <nav className="container-app flex items-center justify-between h-16">
+    <header className="sticky top-3 sm:top-4 z-40 transition-all">
+      <nav className="container-app flex items-center justify-between h-16 px-4 sm:px-6 rounded-2xl border border-gray-200/60 dark:border-white/10 bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/30 transition-colors">
         <Logo />
         <div className="hidden md:flex items-center gap-1">
           {links.map((l) => (
