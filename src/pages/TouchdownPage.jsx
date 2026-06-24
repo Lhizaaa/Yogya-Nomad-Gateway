@@ -7,6 +7,7 @@ import { useApp } from '../context/AppContext'
 import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
 import WeatherWidget from '../components/Home/WeatherWidget'
+import CompletionCelebration from '../components/Touchdown/CompletionCelebration'
 import { logEvent } from '../utils/eventLogger'
 
 const STEP_META = {
@@ -15,6 +16,15 @@ const STEP_META = {
   msme: { icon: Coffee, color: 'from-amber-500 to-orange-600' },
   transport: { icon: Bus, color: 'from-emerald-500 to-teal-600' },
   explore: { icon: Compass, color: 'from-violet-500 to-purple-600' }
+}
+
+// Which preference dimension drives each step's personalized description.
+const STEP_VARIANT_BY = {
+  connect: 'budget',
+  workspace: 'workspace',
+  msme: 'budget',
+  transport: 'budget',
+  explore: 'budget'
 }
 
 export default function TouchdownPage() {
@@ -27,8 +37,29 @@ export default function TouchdownPage() {
   const [budget, setBudget] = useState(prefs?.budget || null)
   const [workspace, setWorkspace] = useState(prefs?.workspace || null)
   const [showResume, setShowResume] = useState(plan.started && completedCount > 0)
+  const [toast, setToast] = useState('')
 
   useEffect(() => { logEvent('screen_view', 'touchdown') }, [])
+
+  const allDone = completedCount === PLAN_STEPS.length
+
+  // Log completion once when the final step is checked.
+  useEffect(() => {
+    if (allDone) logEvent('plan_completed', `${prefs?.budget || ''}/${prefs?.workspace || ''}`)
+  }, [allDone, prefs])
+
+  const shareCompletion = async () => {
+    const text = t('touchdown.celebration.shareText')
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: t('brand'), text, url: window.location.origin })
+        return
+      }
+      await navigator.clipboard.writeText(`${text} ${window.location.origin}`)
+    } catch { /* ignore */ }
+    setToast(t('common.copied'))
+    setTimeout(() => setToast(''), 1800)
+  }
 
   const submit = () => {
     if (!budget || !workspace) return
@@ -38,6 +69,19 @@ export default function TouchdownPage() {
   }
 
   const progress = Math.round((completedCount / PLAN_STEPS.length) * 100)
+
+  // Active preferences driving the personalized plan (saved prefs win, fall back to local picks)
+  const planBudget = prefs?.budget || budget || 'medium'
+  const planWorkspace = prefs?.workspace || workspace || 'cafe'
+
+  const stepDesc = (id) => {
+    const dim = STEP_VARIANT_BY[id]
+    const variantKey = dim === 'workspace' ? planWorkspace : planBudget
+    return t(`touchdown.plan.${id}.${variantKey}`, t(`touchdown.steps.${id}.desc`))
+  }
+
+  const budgetLabelKey = { low: 'budgetLow', medium: 'budgetMedium', high: 'budgetHigh' }
+  const workspaceLabelKey = { cafe: 'quietCafe', coworking: 'dedicatedDesk' }
 
   return (
     <div className="relative">
@@ -112,6 +156,22 @@ export default function TouchdownPage() {
                   </Button>
                 </div>
 
+                {/* personalized profile */}
+                <div className="mb-5 flex items-center gap-2 flex-wrap">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">{t('touchdown.profileLabel')}:</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-200/60 dark:border-brand-500/20 px-3 py-1 text-xs font-semibold">
+                    <Wallet size={12} /> {t(`touchdown.${budgetLabelKey[planBudget]}`)}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-200/60 dark:border-brand-500/20 px-3 py-1 text-xs font-semibold">
+                    <Laptop size={12} /> {t(`touchdown.${workspaceLabelKey[planWorkspace]}`)}
+                  </span>
+                </div>
+
+                {/* celebration when all steps are done */}
+                <AnimatePresence>
+                  {allDone && <CompletionCelebration key="celebration" onShare={shareCompletion} />}
+                </AnimatePresence>
+
                 {/* progress */}
                 <div className="mb-6">
                   <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
@@ -134,10 +194,15 @@ export default function TouchdownPage() {
                           </span>
                           <div className="flex-1 min-w-0">
                             <div className="font-semibold text-gray-900 dark:text-white">{t(`touchdown.steps.${id}.title`)}</div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">{t(`touchdown.steps.${id}.desc`)}</div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">{stepDesc(id)}</div>
                             {id === 'connect' && (
                               <Button variant="secondary" className="mt-2 !py-1.5 !text-xs" onClick={() => navigate('/map?filter=wifi-spot')}>
                                 <Wifi size={13} /> {t('touchdown.showWifi')}
+                              </Button>
+                            )}
+                            {id === 'workspace' && (
+                              <Button variant="secondary" className="mt-2 !py-1.5 !text-xs" onClick={() => navigate(`/map?filter=${planWorkspace}`)}>
+                                <Laptop size={13} /> {t(`touchdown.${workspaceLabelKey[planWorkspace]}`)}
                               </Button>
                             )}
                           </div>
@@ -166,6 +231,15 @@ export default function TouchdownPage() {
           </AnimatePresence>
         </div>
       </section>
+
+      <AnimatePresence>
+        {toast && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 rounded-full bg-gray-900 text-white text-sm px-4 py-2 shadow-xl">
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

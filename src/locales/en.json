@@ -129,6 +129,42 @@
       "msme": { "title": "Explore Local MSME", "desc": "Try geblek & local coffee from Kulon Progo." },
       "transport": { "title": "Plan Transport", "desc": "Set up Gojek/Grab or the Airport Train for mobility." },
       "explore": { "title": "Explore Around", "desc": "Visit Glagah Beach or Kalibiru when you have free time." }
+    },
+    "profileLabel": "Plan tailored for",
+    "celebration": {
+      "title": "You're All Set! 🎉",
+      "desc": "You've completed every step of your first 48 hours. Officially welcome to Yogyakarta — time to enjoy the adventure!",
+      "badge": "Nomad Ready",
+      "explore": "Explore Workspaces",
+      "starterKit": "Open Starter Kit",
+      "share": "Share",
+      "shareText": "I just completed my first 48-hour plan in Yogyakarta with Yogya Nomad Gateway! 🧭✈️"
+    },
+    "plan": {
+      "connect": {
+        "low": "Grab a by.U SIM or the cheapest data pack; maximize free cafe WiFi around YIA.",
+        "medium": "Get a 15–18 GB Telkomsel/XL SIM for stable coverage over 48 hours.",
+        "high": "Activate a premium Telkomsel eSIM + unlimited plan; keep a pocket WiFi as backup."
+      },
+      "workspace": {
+        "cafe": "Find a quiet cafe with WiFi & outlets; arrive 9–11 AM before the crowd.",
+        "coworking": "Book a dedicated desk at a coworking space; check day passes & meeting rooms."
+      },
+      "msme": {
+        "low": "Try geblek, tempe benguk & coffee at an angkringan — full under Rp 25,000.",
+        "medium": "Eat at popular local warungs & try growol; budget Rp 40,000–80,000.",
+        "high": "Enjoy specialty coffee & a lakeside restaurant at Sermo Reservoir."
+      },
+      "transport": {
+        "low": "Take the DAMRI bus or YIA Airport Train to the city — most economical.",
+        "medium": "Order Gojek/Grab for flexibility; mix with local ojek.",
+        "high": "Rent a car with driver or an official airport taxi for full comfort."
+      },
+      "explore": {
+        "low": "Glagah Beach & lagoon — free/cheap, perfect to recharge.",
+        "medium": "Kalibiru or Sermo Reservoir; prepare entry & boat tickets.",
+        "high": "Guided Kalibiru tour + Suroloyo sunset with private transport."
+      }
     }
   },
   "map": {

@@ -129,6 +129,42 @@
       "msme": { "title": "Jelajahi UMKM Lokal", "desc": "Cicipi geblek & kopi lokal khas Kulon Progo." },
       "transport": { "title": "Rencanakan Transport", "desc": "Atur Gojek/Grab atau Kereta Bandara untuk mobilitas." },
       "explore": { "title": "Jelajahi Sekitar", "desc": "Sempatkan ke Pantai Glagah atau Kalibiru saat senggang." }
+    },
+    "profileLabel": "Rencana disesuaikan untuk",
+    "celebration": {
+      "title": "Anda Siap Menjelajah! 🎉",
+      "desc": "Semua langkah 48 jam pertama Anda selesai. Selamat datang resmi di Yogyakarta — saatnya menikmati petualangan!",
+      "badge": "Nomad Ready",
+      "explore": "Jelajahi Workspace",
+      "starterKit": "Buka Starter Kit",
+      "share": "Bagikan",
+      "shareText": "Saya baru saja menyelesaikan rencana 48 jam pertama di Yogyakarta dengan Yogya Nomad Gateway! 🧭✈️"
+    },
+    "plan": {
+      "connect": {
+        "low": "Beli SIM by.U atau paket data termurah; maksimalkan WiFi gratis di cafe sekitar YIA.",
+        "medium": "Ambil SIM Telkomsel/XL 15–18 GB untuk koneksi stabil selama 48 jam.",
+        "high": "Aktifkan eSIM premium Telkomsel + paket unlimited; siapkan pocket WiFi cadangan."
+      },
+      "workspace": {
+        "cafe": "Cari cafe tenang ber-WiFi dengan colokan; datang 09.00–11.00 sebelum ramai.",
+        "coworking": "Booking dedicated desk di coworking; cek paket harian & ketersediaan ruang meeting."
+      },
+      "msme": {
+        "low": "Cicipi geblek, tempe benguk & kopi di angkringan — kenyang di bawah Rp 25.000.",
+        "medium": "Makan di warung lokal populer & coba growol; sisihkan Rp 40.000–80.000.",
+        "high": "Nikmati specialty coffee & resto tepi Waduk Sermo dengan pemandangan."
+      },
+      "transport": {
+        "low": "Gunakan DAMRI atau Kereta Bandara YIA ke kota — paling hemat.",
+        "medium": "Pesan Gojek/Grab untuk fleksibilitas; gabungkan dengan ojek lokal.",
+        "high": "Sewa mobil + sopir atau taksi bandara resmi untuk kenyamanan penuh."
+      },
+      "explore": {
+        "low": "Pantai Glagah & laguna — gratis/murah, cocok untuk recharge.",
+        "medium": "Kalibiru atau Waduk Sermo; siapkan tiket masuk & perahu.",
+        "high": "Tur terpandu Kalibiru + sunset Puncak Suroloyo dengan transport pribadi."
+      }
     }
   },
   "map": {
