@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { CalendarCheck, ChevronUp, ChevronDown, X, Copy } from 'lucide-react'
+import { CalendarCheck, ChevronUp, ChevronDown, X, Copy, ArrowLeft } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { getLocations } from '../utils/locationStore'
 import { logEvent } from '../utils/eventLogger'
@@ -10,6 +11,7 @@ import BudgetCalculator from '../components/Itinerary/BudgetCalculator'
 
 export default function ItineraryPage() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { itinerary, removeFromItinerary, moveItineraryItem } = useApp()
   const [toast, setToast] = useState('')
 
@@ -29,6 +31,9 @@ export default function ItineraryPage() {
   return (
     <section className="py-8">
       <div className="container-app max-w-2xl space-y-6">
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500">
+          <ArrowLeft size={16} /> {t('common.back')}
+        </button>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('itinerary.title')}</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('itinerary.subtitle')}</p>

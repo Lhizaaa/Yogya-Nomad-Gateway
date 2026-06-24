@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { LayoutDashboard, MapPin, ScrollText, Lock, LogOut } from 'lucide-react'
+import { LayoutDashboard, MapPin, ScrollText, Lock, LogOut, ArrowLeft } from 'lucide-react'
 import { getLocations } from '../utils/locationStore'
 import GlassCard from '../components/common/GlassCard'
 import Button from '../components/common/Button'
@@ -14,6 +15,7 @@ const SESSION_KEY = 'nomad_admin'
 
 export default function AdminPage() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const [authed, setAuthed] = useState(() => {
     try { return sessionStorage.getItem(SESSION_KEY) === '1' } catch { return false }
   })
@@ -40,6 +42,9 @@ export default function AdminPage() {
   if (!authed) {
     return (
       <div className="container-app py-20 max-w-sm">
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
+          <ArrowLeft size={16} /> {t('common.back')}
+        </button>
         <GlassCard className="p-8">
           <span className="mx-auto grid place-items-center w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white"><Lock size={24} /></span>
           <h1 className="mt-4 text-xl font-bold text-center text-gray-900 dark:text-white">{t('admin.title')}</h1>
@@ -67,6 +72,9 @@ export default function AdminPage() {
   return (
     <section className="py-8">
       <div className="container-app">
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
+          <ArrowLeft size={16} /> {t('common.back')}
+        </button>
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-extrabold text-gray-900 dark:text-white">{t('admin.title')}</h1>
           <Button variant="ghost" onClick={logout}><LogOut size={15} /> {t('admin.logout')}</Button>

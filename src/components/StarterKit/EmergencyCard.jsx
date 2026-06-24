@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Phone, X, Copy } from 'lucide-react'
+import { Phone, X, Copy, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
 import kit from '../../data/starterKit.json'
 
@@ -21,6 +21,9 @@ export default function EmergencyCard({ open, onClose, onCopy }) {
           exit={{ opacity: 0 }}
         >
           <div className="container-app max-w-lg py-8">
+            <button onClick={onClose} className="inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-white mb-5">
+              <ArrowLeft size={16} /> {t('common.back')}
+            </button>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-extrabold flex items-center gap-2">
                 <Phone size={24} /> {t('starterKit.emergency.cardMode')}

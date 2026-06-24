@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Wifi, Laptop, Coffee, Bus, Compass, Check, Wallet, RotateCcw, Play } from 'lucide-react'
+import { Wifi, Laptop, Coffee, Bus, Compass, Check, Wallet, RotateCcw, Play, ArrowLeft } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
@@ -87,6 +87,9 @@ export default function TouchdownPage() {
     <div className="relative">
       <section className="relative overflow-hidden py-10">
         <div className="container-app relative z-10 max-w-2xl">
+          <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
+            <ArrowLeft size={16} /> {t('common.back')}
+          </button>
           <div className="mb-5"><WeatherWidget /></div>
           <AnimatePresence mode="wait">
             {/* WELCOME */}
