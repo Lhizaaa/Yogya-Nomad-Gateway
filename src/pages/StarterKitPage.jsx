@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink } from 'lucide-react'
+import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink, Download, Printer } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import GlassCard from '../components/common/GlassCard'
 import Button from '../components/common/Button'
+import NomadQuiz from '../components/StarterKit/NomadQuiz'
+import ArrivalChecklist from '../components/StarterKit/ArrivalChecklist'
+import SimComparison from '../components/StarterKit/SimComparison'
+import CurrencyConverter from '../components/StarterKit/CurrencyConverter'
+import EmergencyCard from '../components/StarterKit/EmergencyCard'
 import kit from '../data/starterKit.json'
 import { logEvent } from '../utils/eventLogger'
+import { downloadStarterKit } from '../utils/starterKitExport'
 
 const SECTIONS = [
   { key: 'tips', icon: Lightbulb },
@@ -20,14 +26,18 @@ export default function StarterKitPage() {
   const { lang } = useLanguage()
   const [open, setOpen] = useState('tips')
   const [toast, setToast] = useState('')
+  const [emergencyOpen, setEmergencyOpen] = useState(false)
 
   useEffect(() => { logEvent('screen_view', 'starter_kit') }, [])
 
+  const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 1800) }
+
   const copy = async (text) => {
     try { await navigator.clipboard.writeText(text) } catch { /* ignore */ }
-    setToast(t('common.copied'))
-    setTimeout(() => setToast(''), 1800)
+    showToast(t('common.copied'))
   }
+
+  const onQuizResult = useCallback((section) => { if (section) setOpen(section) }, [])
 
   const openApp = (item) => {
     logEvent('open_transport', item.name)
@@ -39,13 +49,34 @@ export default function StarterKitPage() {
     }
   }
 
+  const onDownload = () => { downloadStarterKit(lang); logEvent('kit_export', 'download'); showToast(t('starterKit.export.done')) }
+  const onPrint = () => { logEvent('kit_export', 'print'); window.print() }
+
   return (
     <section className="relative overflow-hidden py-10">
       <div className="container-app relative z-10 max-w-2xl">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('starterKit.title')}</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-7">{t('starterKit.subtitle')}</p>
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('starterKit.title')}</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('starterKit.subtitle')}</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="danger" className="!py-2 !px-3 !text-xs" onClick={() => { setEmergencyOpen(true); logEvent('emergency_card_open', '') }}>
+              <Phone size={14} /> {t('starterKit.emergency.cardMode')}
+            </Button>
+            <Button variant="secondary" className="!py-2 !px-3 !text-xs" onClick={onDownload}>
+              <Download size={14} /> {t('starterKit.export.download')}
+            </Button>
+            <Button variant="ghost" className="!py-2 !px-3 !text-xs" onClick={onPrint}>
+              <Printer size={14} /> {t('starterKit.export.print')}
+            </Button>
+          </div>
+        </div>
 
-        <div className="space-y-3">
+        <div className="mt-7 space-y-3">
+          <NomadQuiz onResult={onQuizResult} />
+          <ArrivalChecklist />
+
           {SECTIONS.map(({ key, icon: Icon }) => {
             const data = kit[key]
             const isOpen = open === key
@@ -110,8 +141,13 @@ export default function StarterKitPage() {
               </GlassCard>
             )
           })}
+
+          <SimComparison />
+          <CurrencyConverter />
         </div>
       </div>
+
+      <EmergencyCard open={emergencyOpen} onClose={() => setEmergencyOpen(false)} onCopy={copy} />
 
       <AnimatePresence>
         {toast && (

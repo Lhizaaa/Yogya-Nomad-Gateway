@@ -37,5 +37,35 @@
       { "name": "Grab", "deeplink": "grab://", "fallback": "Buka aplikasi Grab", "address": "Yogyakarta International Airport (YIA), Temon, Kulon Progo" },
       { "name": "DAMRI Airport Bus", "deeplink": "", "fallback": "Tiket di konter Terminal Kedatangan", "address": "YIA Arrival Terminal, Damri Counter" }
     ]
+  },
+  "sim": {
+    "id": "Perbandingan SIM Card",
+    "en": "SIM Card Comparison",
+    "esimNote_id": "eSIM tersedia untuk turis asing — pindai QR di konter bandara atau beli online (Airalo/Holafly) sebelum berangkat. Aktifkan saat tiba agar masa aktif tidak terbuang.",
+    "esimNote_en": "eSIM is available for foreign tourists — scan a QR at the airport counter or buy online (Airalo/Holafly) before departure. Activate on arrival so validity isn't wasted.",
+    "items": [
+      { "name": "Telkomsel", "price": "Rp 100.000", "quota": "15 GB / 30 hari", "coverage_id": "Sinyal terkuat & merata di Kulon Progo", "coverage_en": "Strongest, most even coverage in Kulon Progo", "esim": true, "bestValue": false },
+      { "name": "by.U", "price": "Rp 50.000", "quota": "20 GB / 30 hari", "coverage_id": "Jaringan Telkomsel, harga lebih murah, registrasi via app", "coverage_en": "Telkomsel network, cheaper, app-based registration", "esim": true, "bestValue": true },
+      { "name": "XL Axiata", "price": "Rp 65.000", "quota": "18 GB / 30 hari", "coverage_id": "Baik di area bandara & kota", "coverage_en": "Good around the airport & city", "esim": true, "bestValue": false },
+      { "name": "Indosat IM3", "price": "Rp 60.000", "quota": "16 GB / 30 hari", "coverage_id": "Stabil di jalur utama, paket turis tersedia", "coverage_en": "Stable on main routes, tourist packs available", "esim": true, "bestValue": false }
+    ]
+  },
+  "checklist": {
+    "id": "Checklist Kedatangan",
+    "en": "Arrival Checklist",
+    "preDeparture": [
+      { "id": "Unduh app peta offline & Gojek/Grab", "en": "Download offline maps & Gojek/Grab apps" },
+      { "id": "Beli eSIM / siapkan paket roaming", "en": "Buy an eSIM / arrange a roaming plan" },
+      { "id": "Tukar sebagian uang ke Rupiah", "en": "Exchange some money to Rupiah" },
+      { "id": "Simpan alamat penginapan secara offline", "en": "Save your accommodation address offline" },
+      { "id": "Foto/scan paspor & dokumen penting", "en": "Photo/scan passport & key documents" }
+    ],
+    "onArrival": [
+      { "id": "Aktifkan SIM/eSIM & cek sinyal", "en": "Activate SIM/eSIM & check signal" },
+      { "id": "Tarik tunai di ATM bandara", "en": "Withdraw cash at the airport ATM" },
+      { "id": "Pesan transport (Gojek/Grab/DAMRI)", "en": "Order transport (Gojek/Grab/DAMRI)" },
+      { "id": "Beli air & camilan untuk perjalanan", "en": "Grab water & snacks for the trip" },
+      { "id": "Konfirmasi check-in penginapan", "en": "Confirm your accommodation check-in" }
+    ]
   }
 }

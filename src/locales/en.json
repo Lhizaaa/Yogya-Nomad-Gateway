@@ -179,7 +179,74 @@
     "title": "Nomad Starter Kit",
     "subtitle": "Essentials for your first days",
     "openApp": "Open App",
-    "copyAddress": "Copy Address"
+    "copyAddress": "Copy Address",
+    "checklist": {
+      "title": "Arrival Checklist",
+      "preDeparture": "Pre-departure",
+      "onArrival": "On arrival",
+      "progress": "Progress",
+      "reset": "Reset"
+    },
+    "sim": {
+      "title": "SIM Card Comparison",
+      "price": "Price",
+      "quota": "Quota",
+      "coverage": "Coverage",
+      "bestValue": "Best Value",
+      "esim": "eSIM",
+      "esimGuide": "eSIM Guide"
+    },
+    "currency": {
+      "title": "Currency Converter",
+      "amount": "Amount",
+      "from": "From",
+      "result": "Result",
+      "tipCalc": "Warung tip helper",
+      "tipDesc": "Suggested round-up",
+      "disclaimer": "Live mid-market rate — actual exchange may differ.",
+      "offline": "Connect to the internet to load live rates.",
+      "rounded": "Round up to"
+    },
+    "emergency": {
+      "cardMode": "Emergency Card",
+      "call": "Call",
+      "copy": "Copy"
+    },
+    "quiz": {
+      "title": "What's Your Nomad Type?",
+      "intro": "Answer 3 quick questions for a personalized kit.",
+      "start": "Start Quiz",
+      "retake": "Retake",
+      "next": "Next",
+      "yourType": "Your type",
+      "questions": {
+        "budget": "How do you spend?",
+        "work": "Where do you work best?",
+        "social": "Your travel vibe?"
+      },
+      "options": {
+        "budgetLow": "Save every rupiah",
+        "budgetHigh": "Comfort over cost",
+        "workCafe": "Lively cafe",
+        "workQuiet": "Quiet focus desk",
+        "social": "Meet new people",
+        "solo": "Solo & calm"
+      },
+      "types": {
+        "explorer": "Budget Explorer",
+        "explorerDesc": "You stretch every rupiah. We've pinned the Cost Guide and cheapest SIM for you.",
+        "comfort": "Comfort Seeker",
+        "comfortDesc": "You value reliability. Check the strongest SIM and dedicated workspaces.",
+        "social": "Social Hopper",
+        "socialDesc": "You thrive around people. Lively cafes and local MSME spots are your scene."
+      }
+    },
+    "export": {
+      "button": "Export",
+      "download": "Download .txt",
+      "print": "Print",
+      "done": "Starter kit exported"
+    }
   },
   "review": {
     "title": "Reviews",

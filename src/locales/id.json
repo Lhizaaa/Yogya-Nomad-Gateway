@@ -179,7 +179,74 @@
     "title": "Nomad Starter Kit",
     "subtitle": "Bekal penting untuk hari-hari pertama Anda",
     "openApp": "Buka Aplikasi",
-    "copyAddress": "Salin Alamat"
+    "copyAddress": "Salin Alamat",
+    "checklist": {
+      "title": "Checklist Kedatangan",
+      "preDeparture": "Sebelum Berangkat",
+      "onArrival": "Setelah Mendarat",
+      "progress": "Progres",
+      "reset": "Atur Ulang"
+    },
+    "sim": {
+      "title": "Perbandingan SIM Card",
+      "price": "Harga",
+      "quota": "Kuota",
+      "coverage": "Jangkauan",
+      "bestValue": "Paling Worth It",
+      "esim": "eSIM",
+      "esimGuide": "Panduan eSIM"
+    },
+    "currency": {
+      "title": "Konversi Mata Uang",
+      "amount": "Jumlah",
+      "from": "Dari",
+      "result": "Hasil",
+      "tipCalc": "Bantu Tip Warung",
+      "tipDesc": "Saran pembulatan",
+      "disclaimer": "Kurs tengah pasar — nilai tukar aktual bisa berbeda.",
+      "offline": "Hubungkan ke internet untuk memuat kurs terkini.",
+      "rounded": "Bulatkan ke"
+    },
+    "emergency": {
+      "cardMode": "Kartu Darurat",
+      "call": "Telepon",
+      "copy": "Salin"
+    },
+    "quiz": {
+      "title": "Apa Tipe Nomad Anda?",
+      "intro": "Jawab 3 pertanyaan singkat untuk kit yang dipersonalisasi.",
+      "start": "Mulai Kuis",
+      "retake": "Ulangi",
+      "next": "Lanjut",
+      "yourType": "Tipe Anda",
+      "questions": {
+        "budget": "Bagaimana gaya pengeluaran Anda?",
+        "work": "Di mana Anda paling produktif?",
+        "social": "Vibe perjalanan Anda?"
+      },
+      "options": {
+        "budgetLow": "Hemat setiap rupiah",
+        "budgetHigh": "Nyaman lebih utama",
+        "workCafe": "Cafe yang ramai",
+        "workQuiet": "Meja fokus yang tenang",
+        "social": "Bertemu orang baru",
+        "solo": "Solo & tenang"
+      },
+      "types": {
+        "explorer": "Budget Explorer",
+        "explorerDesc": "Anda memaksimalkan setiap rupiah. Kami sematkan Panduan Biaya dan SIM termurah untuk Anda.",
+        "comfort": "Comfort Seeker",
+        "comfortDesc": "Anda mengutamakan keandalan. Cek SIM terkuat dan workspace dedicated.",
+        "social": "Social Hopper",
+        "socialDesc": "Anda hidup di tengah keramaian. Cafe ramai dan UMKM lokal cocok untuk Anda."
+      }
+    },
+    "export": {
+      "button": "Ekspor",
+      "download": "Unduh .txt",
+      "print": "Cetak",
+      "done": "Starter kit diekspor"
+    }
   },
   "review": {
     "title": "Ulasan",
