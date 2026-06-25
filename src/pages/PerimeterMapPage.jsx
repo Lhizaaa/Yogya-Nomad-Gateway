@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { List, Map as MapIcon, ArrowLeft } from 'lucide-react'
+import { List, Map as MapIcon } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { getLocations } from '../utils/locationStore'
 import LocationCard from '../components/PerimeterMap/LocationCard'
@@ -15,7 +15,6 @@ const TYPES = ['all', 'cafe', 'coworking', 'wifi-spot']
 
 export default function PerimeterMapPage() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const { prefs } = useApp()
   const [params] = useSearchParams()
   const [type, setType] = useState(params.get('filter') || 'all')
@@ -60,9 +59,6 @@ export default function PerimeterMapPage() {
   return (
     <section className="py-8">
       <div className="container-app">
-        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
-          <ArrowLeft size={16} /> {t('common.back')}
-        </button>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('map.title')}</h1>
