@@ -40,9 +40,9 @@ export default function ArrivalDataPanel() {
         <div className="mt-1 text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">
           <CountUp value={a.flight_today.total} />
         </div>
-        <div className="mt-1 flex gap-2 text-[11px] text-gray-500 dark:text-gray-400">
-          <span className="text-brand-600 dark:text-brand-300 font-semibold">{a.flight_today.international}</span> {t('arrivalTwin.international')}
-          <span className="text-sky-600 dark:text-sky-300 font-semibold ml-1">{a.flight_today.domestic}</span> {t('arrivalTwin.domestic')}
+        <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[11px] text-gray-500 dark:text-gray-400">
+          <span><span className="text-brand-600 dark:text-brand-300 font-semibold">{a.flight_today.international}</span> {t('arrivalTwin.international')}</span>
+          <span><span className="text-sky-600 dark:text-sky-300 font-semibold">{a.flight_today.domestic}</span> {t('arrivalTwin.domestic')}</span>
         </div>
       </Card>
 

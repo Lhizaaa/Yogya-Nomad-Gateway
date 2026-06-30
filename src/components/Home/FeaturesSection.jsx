@@ -15,7 +15,7 @@ export default function FeaturesSection() {
     <section className="py-16">
       <div className="container-app">
         <SectionHeading title={t('features.title')} subtitle={t('features.subtitle')} />
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {features.map((f, i) => (
             <Reveal key={f.to} delay={i * 0.08}>
               <Link to={f.to}>

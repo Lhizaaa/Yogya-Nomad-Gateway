@@ -65,7 +65,7 @@ export default function ArticleDetailPage() {
         {related.length > 0 && (
           <div className="mt-12">
             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('articles.related')}</h2>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {related.map((a) => <ArticleCard key={a.id} article={a} />)}
             </div>
           </div>

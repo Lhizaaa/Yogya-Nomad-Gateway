@@ -16,7 +16,7 @@ export default function ArrivalTwinSection() {
     <section id="arrival-twin" className="relative overflow-hidden py-16">
       <div className="container-app relative z-10">
         <SectionHeading title={t('arrivalTwin.title')} subtitle={t('arrivalTwin.subtitle')} />
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="grid place-items-center">
             {online ? (
               <Suspense fallback={<Skeleton className="w-[320px] h-[320px] rounded-full" />}>

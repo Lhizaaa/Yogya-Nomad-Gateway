@@ -12,7 +12,7 @@ export default function ThemeToggle() {
       onClick={cycle}
       aria-label="Toggle theme"
       title={`Theme: ${mode}`}
-      className="relative p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+      className="relative p-1 sm:p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
@@ -23,7 +23,7 @@ export default function ThemeToggle() {
           transition={{ duration: 0.25 }}
           className="block"
         >
-          <Icon size={18} />
+          <Icon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
         </motion.span>
       </AnimatePresence>
     </button>

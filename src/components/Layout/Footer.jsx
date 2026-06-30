@@ -23,7 +23,7 @@ export default function Footer() {
     { label: t('footer.comp.terms'), to: '#' }
   ]
   return (
-    <footer className="relative mt-16 pb-24 md:pb-10 px-4">
+    <footer className="relative mt-16 pb-24 lg:pb-10 px-4">
       <Reveal>
         <div className="relative overflow-hidden container-app glass !rounded-[40px] p-8 sm:p-12 bg-gradient-to-br from-brand-50/70 to-sky-50/50 dark:from-white/5 dark:to-white/[0.02]">
           {/* subtle floating decor */}

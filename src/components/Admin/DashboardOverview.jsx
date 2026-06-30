@@ -62,7 +62,7 @@ export default function DashboardOverview({ locations }) {
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <GlassCard className="p-5">
           <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-3">{t('admin.charts.byType')}</h3>
           <div className="h-56">

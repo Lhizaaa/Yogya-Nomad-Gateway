@@ -39,10 +39,10 @@ export default function SearchBar() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+        className="p-1 sm:p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
         title={t('search.placeholder')}
       >
-        <Search size={18} />
+        <Search className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
       </button>
 
       {open && (

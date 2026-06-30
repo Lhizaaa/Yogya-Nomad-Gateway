@@ -16,7 +16,7 @@ export default function BottomNav() {
   const isActive = (to) => (to === '/' ? pathname === '/' : pathname.startsWith(to))
 
   return (
-    <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 border-t border-gray-200/70 dark:border-white/10 bg-white/85 dark:bg-neutral-950/85 backdrop-blur-xl pb-[env(safe-area-inset-bottom)]">
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-gray-200/70 dark:border-white/10 bg-white/85 dark:bg-neutral-950/85 backdrop-blur-xl pb-[env(safe-area-inset-bottom)]">
       <div className="flex items-stretch justify-around">
         {items.map(({ to, icon: Icon, label }) => {
           const active = isActive(to)

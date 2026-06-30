@@ -21,9 +21,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-3 sm:top-4 z-40 transition-all">
-      <nav className="container-app flex items-center justify-between h-16 px-4 sm:px-6 rounded-2xl border border-gray-200/60 dark:border-white/10 bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/30 transition-colors">
+      <nav className="container-app flex items-center justify-between gap-1 sm:gap-2 h-14 sm:h-16 px-2.5 sm:px-6 rounded-2xl border border-gray-200/60 dark:border-white/10 bg-white/70 dark:bg-neutral-950/70 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/30 transition-colors">
         <Logo />
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-1">
           {links.map((l) => (
             <Link
               key={l.to}
@@ -38,18 +38,18 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-0 sm:gap-2 shrink-0">
           <SearchBar />
-          <Link to="/itinerary" title={t('nav.itinerary')} className="relative p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-            <CalendarCheck size={18} />
+          <Link to="/itinerary" title={t('nav.itinerary')} className="relative p-1 sm:p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <CalendarCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             {itinerary.length > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-4 h-4 rounded-full bg-brand-500 text-white text-[9px] font-bold">{itinerary.length}</span>
+              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-brand-500 text-white text-[8px] sm:text-[9px] font-bold">{itinerary.length}</span>
             )}
           </Link>
-          <Link to="/my-spots" title={t('nav.mySpots')} className="relative p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-            <Bookmark size={18} />
+          <Link to="/my-spots" title={t('nav.mySpots')} className="relative p-1 sm:p-2 rounded-full text-gray-500 dark:text-gray-300 hover:text-brand-600 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <Bookmark className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             {favorites.length > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-4 h-4 rounded-full bg-brand-500 text-white text-[9px] font-bold">{favorites.length}</span>
+              <span className="absolute -top-0.5 -right-0.5 grid place-items-center w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-brand-500 text-white text-[8px] sm:text-[9px] font-bold">{favorites.length}</span>
             )}
           </Link>
           <LanguageToggle />

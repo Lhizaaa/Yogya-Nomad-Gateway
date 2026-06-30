@@ -25,7 +25,7 @@ export default function TravelAnalytics() {
     <section id="analytics" className="py-16">
       <div className="container-app">
         <SectionHeading title={t('analytics.title')} subtitle={t('analytics.subtitle')} />
-        <div className="grid lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <Reveal className="lg:col-span-2">
             <GlassCard className="p-5 h-full">
               <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-3 text-sm">{t('analytics.weeklyArrivals')}</h3>

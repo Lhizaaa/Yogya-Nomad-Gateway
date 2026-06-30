@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next'
 import Hero from '../components/Home/Hero'
 import ArrivalTwinSection from '../components/ArrivalTwin/ArrivalTwinSection'
 import FeaturesSection from '../components/Home/FeaturesSection'
-import TestimonialCarousel from '../components/Testimonials/TestimonialCarousel'
 import ArticlesSection from '../components/Articles/ArticlesSection'
 import AboutSection from '../components/About/AboutSection'
 import Skeleton from '../components/common/Skeleton'
@@ -26,7 +25,6 @@ export default function Home() {
       <Suspense fallback={<div className="container-app py-16"><Skeleton className="h-72 w-full" /></div>}>
         <TravelAnalytics />
       </Suspense>
-      <TestimonialCarousel />
       <ArticlesSection />
       <AboutSection />
 

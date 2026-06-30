@@ -57,7 +57,7 @@ export default function MapView({ locations }) {
         <Button type="submit">{t('common.search')}</Button>
       </form>
 
-      <div className="grid lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
           <iframe
             title="map"

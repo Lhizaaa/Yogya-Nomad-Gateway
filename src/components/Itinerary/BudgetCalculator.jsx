@@ -30,7 +30,7 @@ export default function BudgetCalculator() {
       </h2>
       <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-4">{t('budget.subtitle')}</p>
 
-      <div className="grid sm:grid-cols-2 gap-3 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <div>
           <label className="text-xs text-gray-400 mb-1 block">{t('budget.days')}</label>
           <input
