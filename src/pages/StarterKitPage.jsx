@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink, Download, Printer, ArrowLeft } from 'lucide-react'
+import { Lightbulb, Wallet, Phone, Bus, ChevronDown, Copy, ExternalLink, Download, Printer } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import GlassCard from '../components/common/GlassCard'
 import Button from '../components/common/Button'
@@ -24,7 +23,6 @@ const SECTIONS = [
 
 export default function StarterKitPage() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const { lang } = useLanguage()
   const [open, setOpen] = useState('tips')
   const [toast, setToast] = useState('')
@@ -57,9 +55,6 @@ export default function StarterKitPage() {
   return (
     <section className="relative overflow-hidden py-10">
       <div className="container-app relative z-10 max-w-2xl">
-        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-500 mb-5">
-          <ArrowLeft size={16} /> {t('common.back')}
-        </button>
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('starterKit.title')}</h1>
