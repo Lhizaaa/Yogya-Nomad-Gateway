@@ -48,19 +48,6 @@ export default function TouchdownPage() {
     if (allDone) logEvent('plan_completed', `${prefs?.budget || ''}/${prefs?.workspace || ''}`)
   }, [allDone, prefs])
 
-  const shareCompletion = async () => {
-    const text = t('touchdown.celebration.shareText')
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: t('brand'), text, url: window.location.origin })
-        return
-      }
-      await navigator.clipboard.writeText(`${text} ${window.location.origin}`)
-    } catch { /* ignore */ }
-    setToast(t('common.copied'))
-    setTimeout(() => setToast(''), 1800)
-  }
-
   const submit = () => {
     if (!budget || !workspace) return
     savePrefs({ budget, workspace })
@@ -169,7 +156,7 @@ export default function TouchdownPage() {
 
                 {/* celebration when all steps are done */}
                 <AnimatePresence>
-                  {allDone && <CompletionCelebration key="celebration" onShare={shareCompletion} />}
+                  {allDone && <CompletionCelebration key="celebration" />}
                 </AnimatePresence>
 
                 {/* progress */}

@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Trophy, MapPin, Backpack, Share2, Award } from 'lucide-react'
+import { Trophy, MapPin, Backpack, Award } from 'lucide-react'
 import GlassCard from '../common/GlassCard'
 import Button from '../common/Button'
 
@@ -38,7 +38,7 @@ function Confetti() {
   )
 }
 
-export default function CompletionCelebration({ onShare }) {
+export default function CompletionCelebration() {
   const { t } = useTranslation()
   const reduce = useReducedMotion()
 
@@ -75,9 +75,6 @@ export default function CompletionCelebration({ onShare }) {
             <Link to="/starter-kit">
               <Button variant="secondary" className="!py-2 !text-sm"><Backpack size={15} /> {t('touchdown.celebration.starterKit')}</Button>
             </Link>
-            <Button variant="ghost" className="!py-2 !text-sm" onClick={onShare}>
-              <Share2 size={15} /> {t('touchdown.celebration.share')}
-            </Button>
           </div>
         </div>
       </GlassCard>
