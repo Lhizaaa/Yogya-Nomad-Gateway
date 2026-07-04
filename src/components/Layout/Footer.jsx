@@ -16,7 +16,7 @@ export default function Footer() {
     { label: t('footer.svc.analytics'), to: '/#analytics' }
   ]
   const company = [
-    { label: t('footer.comp.about'), to: '/#about' },
+    { label: t('footer.comp.about'), to: '/' },
     { label: t('footer.comp.docs'), to: '#' },
     { label: t('footer.comp.career'), to: '#' },
     { label: t('footer.comp.privacy'), to: '#' },

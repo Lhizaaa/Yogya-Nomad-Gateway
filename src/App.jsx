@@ -4,12 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Layout/Navbar'
 import BottomNav from './components/Layout/BottomNav'
 import Footer from './components/Layout/Footer'
-import BatikBorder from './components/decorative/BatikBorder'
 import AnimatedGradientBg from './components/decorative/AnimatedGradientBg'
 import ParticleBackground from './components/decorative/ParticleBackground'
 import FloatingShapes from './components/decorative/FloatingShapes'
 import OfflineBanner from './components/common/OfflineBanner'
 import InstallBanner from './components/common/InstallBanner'
+import ChatWidget from './components/Chatbot/ChatWidget'
 
 import Home from './pages/Home'
 import TouchdownPage from './pages/TouchdownPage'
@@ -43,7 +43,6 @@ export default function App() {
       <AnimatedGradientBg fixed />
       <ParticleBackground fixed count={32} />
       <FloatingShapes fixed subtle />
-      <BatikBorder />
       <OfflineBanner />
       <Navbar />
 
@@ -73,6 +72,7 @@ export default function App() {
       <Footer />
       <BottomNav />
       <InstallBanner />
+      <ChatWidget />
     </div>
   )
 }

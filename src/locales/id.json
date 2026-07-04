@@ -93,16 +93,6 @@
       "Tips Nomad": "Tips Nomad"
     }
   },
-  "about": {
-    "title": "Tentang Kami",
-    "desc": "Platform digital untuk membantu freelancer, remote worker, dan wisatawan menemukan workspace, koneksi internet, transportasi, serta pengalaman terbaik setelah tiba di Yogyakarta International Airport.",
-    "value1Title": "Data Terverifikasi Lokal",
-    "value1Desc": "Lokasi diuji langsung oleh komunitas nomad.",
-    "value2Title": "Gratis Digunakan",
-    "value2Desc": "Tanpa biaya, tanpa langganan.",
-    "value3Title": "Didesain untuk Koneksi Lambat",
-    "value3Desc": "Ringan & dapat diakses offline."
-  },
   "touchdown": {
     "welcomeTitle": "Touchdown Mode",
     "welcomeDesc": "Jawab 2 pertanyaan singkat dan kami akan menyusun rencana 48 jam pertama Anda di Yogyakarta.",
@@ -175,6 +165,7 @@
     "filterType": "Tipe Workspace",
     "openNow": "Buka Sekarang",
     "bestMatch": "Cocok untuk Anda",
+    "aiPick": "Rekomendasi AI",
     "types": {
       "all": "Semua",
       "cafe": "Quiet Cafe",

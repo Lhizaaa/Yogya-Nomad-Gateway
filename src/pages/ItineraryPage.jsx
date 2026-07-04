@@ -8,6 +8,7 @@ import { logEvent } from '../utils/eventLogger'
 import GlassCard from '../components/common/GlassCard'
 import Button from '../components/common/Button'
 import BudgetCalculator from '../components/Itinerary/BudgetCalculator'
+import AiTripPlanner from '../components/Itinerary/AiTripPlanner'
 
 export default function ItineraryPage() {
   const { t } = useTranslation()
@@ -38,6 +39,8 @@ export default function ItineraryPage() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">{t('itinerary.title')}</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('itinerary.subtitle')}</p>
         </div>
+
+        <AiTripPlanner />
 
         {locations.length === 0 ? (
           <div className="text-center py-12 text-gray-400">

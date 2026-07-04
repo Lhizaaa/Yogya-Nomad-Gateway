@@ -8,6 +8,7 @@ import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
 import WeatherWidget from '../components/Home/WeatherWidget'
 import CompletionCelebration from '../components/Touchdown/CompletionCelebration'
+import AiBriefing from '../components/Touchdown/AiBriefing'
 import { logEvent } from '../utils/eventLogger'
 
 const STEP_META = {
@@ -153,6 +154,9 @@ export default function TouchdownPage() {
                     <Laptop size={12} /> {t(`touchdown.${workspaceLabelKey[planWorkspace]}`)}
                   </span>
                 </div>
+
+                {/* AI-personalized 48-hour briefing */}
+                <AiBriefing budget={planBudget} workspace={planWorkspace} />
 
                 {/* celebration when all steps are done */}
                 <AnimatePresence>

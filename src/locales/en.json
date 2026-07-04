@@ -93,16 +93,6 @@
       "Tips Nomad": "Nomad Tips"
     }
   },
-  "about": {
-    "title": "About Us",
-    "desc": "A digital platform helping freelancers, remote workers, and travelers find workspaces, internet connection, transport, and the best experiences after arriving at Yogyakarta International Airport.",
-    "value1Title": "Locally Verified Data",
-    "value1Desc": "Locations tested by the nomad community.",
-    "value2Title": "Free to Use",
-    "value2Desc": "No fees, no subscription.",
-    "value3Title": "Built for Slow Connections",
-    "value3Desc": "Lightweight & offline-accessible."
-  },
   "touchdown": {
     "welcomeTitle": "Touchdown Mode",
     "welcomeDesc": "Answer 2 quick questions and we'll build your first 48-hour plan in Yogyakarta.",
@@ -175,6 +165,7 @@
     "filterType": "Workspace Type",
     "openNow": "Open Now",
     "bestMatch": "Best Match",
+    "aiPick": "AI Pick",
     "types": {
       "all": "All",
       "cafe": "Quiet Cafe",

@@ -1,0 +1,17 @@
+{
+  "name": "yogya-nomad-gateway-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend proxy for the Yogya Nomad Gateway AI chatbot (OpenAI API)",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "openai": "^6.45.0"
+  }
+}

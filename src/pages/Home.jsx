@@ -6,7 +6,6 @@ import Hero from '../components/Home/Hero'
 import ArrivalTwinSection from '../components/ArrivalTwin/ArrivalTwinSection'
 import FeaturesSection from '../components/Home/FeaturesSection'
 import ArticlesSection from '../components/Articles/ArticlesSection'
-import AboutSection from '../components/About/AboutSection'
 import Skeleton from '../components/common/Skeleton'
 import { logEvent } from '../utils/eventLogger'
 
@@ -26,7 +25,6 @@ export default function Home() {
         <TravelAnalytics />
       </Suspense>
       <ArticlesSection />
-      <AboutSection />
 
       <div className="container-app pb-6 text-center">
         <Link to="/admin" className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-brand-500 transition-colors">

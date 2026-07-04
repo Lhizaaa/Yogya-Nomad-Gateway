@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Wifi, WifiOff, Plug, MapPin, Star, Clock, Bookmark, BookmarkCheck, CalendarPlus, CalendarCheck } from 'lucide-react'
+import { Wifi, WifiOff, Plug, MapPin, Star, Clock, Bookmark, BookmarkCheck, CalendarPlus, CalendarCheck, Sparkles } from 'lucide-react'
 import Badge from '../common/Badge'
 import { useApp } from '../../context/AppContext'
 import { logEvent } from '../../utils/eventLogger'
 
 const priceLabel = { low: '$', medium: '$$', high: '$$$' }
 
-export default function LocationCard({ loc, bestMatch }) {
+export default function LocationCard({ loc, bestMatch, highlighted }) {
   const { t } = useTranslation()
   const { isFavorite, toggleFavorite, isInItinerary, addToItinerary } = useApp()
   const favorite = isFavorite(loc.id)
@@ -29,7 +29,9 @@ export default function LocationCard({ loc, bestMatch }) {
 
   return (
     <Link to={`/map/${loc.id}`} className="block h-full">
-      <div className="group h-full rounded-3xl bg-white dark:bg-gray-800/60 border border-gray-100 dark:border-white/10 p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+      <div className={`group h-full rounded-3xl bg-white dark:bg-gray-800/60 border p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all ${
+        highlighted ? 'border-brand-500 ring-2 ring-brand-500/40' : 'border-gray-100 dark:border-white/10'
+      }`}>
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
             <h3 className="font-bold text-gray-900 dark:text-white truncate">{loc.name}</h3>
@@ -54,7 +56,10 @@ export default function LocationCard({ loc, bestMatch }) {
             </button>
           </div>
         </div>
-        {bestMatch && <Badge tone="brand" className="mt-1.5">★ {t('map.bestMatch')}</Badge>}
+        <div className="flex flex-wrap gap-1.5 mt-1.5">
+          {highlighted && <Badge tone="brand"><Sparkles size={11} /> {t('map.aiPick')}</Badge>}
+          {bestMatch && <Badge tone="brand">★ {t('map.bestMatch')}</Badge>}
+        </div>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {loc.wifi_speed_mbps != null ? (
