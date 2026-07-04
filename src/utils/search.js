@@ -1,5 +1,5 @@
 import { getLocations } from './locationStore'
-import articles from '../data/articles.json'
+import { getArticles } from './articleStore'
 import starterKit from '../data/starterKit.json'
 
 function matches(query, ...fields) {
@@ -15,7 +15,7 @@ export function searchAll(query) {
     .filter((l) => matches(q, l.name, l.address, l.type))
     .slice(0, 5)
 
-  const matchedArticles = articles
+  const matchedArticles = getArticles()
     .filter((a) => matches(q, a.title, a.title_en, a.category, a.category_en, a.excerpt, a.excerpt_en))
     .slice(0, 5)
 

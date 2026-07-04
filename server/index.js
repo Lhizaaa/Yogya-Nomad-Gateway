@@ -5,6 +5,9 @@ import { dirname, join } from 'node:path'
 import express from 'express'
 import cors from 'cors'
 import OpenAI from 'openai'
+import destinationsRouter from './routes/destinations.js'
+import articlesRouter from './routes/articles.js'
+import { testConnection } from './config/database.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -74,9 +77,17 @@ const app = express()
 app.use(cors())
 app.use(express.json({ limit: '1mb' }))
 
-app.get('/api/health', (_req, res) => {
-  res.json({ ok: true, model: MODEL })
+// Health check: cek status server AI + koneksi database (READ-ONLY).
+app.get('/api/health', async (_req, res) => {
+  const dbConnected = await testConnection()
+  res.json({ ok: true, model: MODEL, database: dbConnected ? 'connected' : 'disconnected' })
 })
+
+// Route destinasi (READ-ONLY) dari database PostgreSQL yogya_nomad_db.
+app.use('/api/destinations', destinationsRouter)
+
+// Route artikel "Jelajahi Kulon Progo" (READ-ONLY) dari database.
+app.use('/api/articles', articlesRouter)
 
 // ---------------------------------------------------------------------------
 // /api/chat — chatbot serba-tahu, dengan toggle web search (grounding)
@@ -217,7 +228,10 @@ Untuk rekomendasi tempat kerja, gunakan HANYA nama dari data ini (jangan mengara
   }
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`\n[Nomad Assistant] Server proxy berjalan di http://localhost:${PORT}`)
-  console.log(`[Nomad Assistant] Model: ${MODEL}\n`)
+  console.log(`[Nomad Assistant] Model: ${MODEL}`)
+  // Cek koneksi database saat start (tidak meng-crash server jika gagal).
+  await testConnection()
+  console.log('')
 })

@@ -3,7 +3,10 @@ dist
 dist-ssr
 .env
 .env.local
+.env.backup
 *.local
+# File backup lokal (buatan saat editing) — jangan di-commit
+*.backup
 .DS_Store
 .vscode/*
 !.vscode/extensions.json

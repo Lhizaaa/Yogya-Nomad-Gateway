@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import SectionHeading from '../common/SectionHeading'
 import ArticleCard from './ArticleCard'
 import Button from '../common/Button'
-import articles from '../../data/articles.json'
+import { getArticles } from '../../utils/articleStore'
 
 const CATS = ['Wisata Alam', 'Kuliner', 'Budaya', 'Tips Nomad']
 
@@ -12,6 +12,8 @@ export default function ArticlesSection() {
   const { t } = useTranslation()
   const [cat, setCat] = useState('all')
   const [limit, setLimit] = useState(6)
+  // Data artikel dari database (via localStorage) dengan fallback JSON.
+  const articles = useMemo(() => getArticles(), [])
 
   const filtered = useMemo(
     () => (cat === 'all' ? articles : articles.filter((a) => a.category === cat)),

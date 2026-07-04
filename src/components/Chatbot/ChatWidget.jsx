@@ -113,6 +113,14 @@ export default function ChatWidget() {
     if (open) inputRef.current?.focus()
   }, [open])
 
+  // Tutup dengan tombol Escape.
+  useEffect(() => {
+    if (!open) return
+    const handler = (e) => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [open])
+
   const sendMessage = useCallback(
     async (text) => {
       const trimmed = text.trim()
@@ -193,6 +201,21 @@ export default function ChatWidget() {
   }
 
   return (
+    <>
+    {/* Backdrop — klik di luar untuk tutup */}
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          key="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          className="fixed inset-0 z-[49] bg-black/20 backdrop-blur-[1px]"
+          onClick={() => setOpen(false)}
+        />
+      )}
+    </AnimatePresence>
     <div className="fixed right-4 lg:right-6 bottom-20 lg:bottom-6 z-50 flex flex-col items-end gap-3 pb-[env(safe-area-inset-bottom)]">
       <AnimatePresence>
         {open && (
@@ -348,6 +371,7 @@ export default function ChatWidget() {
         </AnimatePresence>
       </motion.button>
     </div>
+    </>
   )
 }
 

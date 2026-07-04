@@ -6,7 +6,7 @@ import { useLanguage } from '../context/LanguageContext'
 import Badge from '../components/common/Badge'
 import Button from '../components/common/Button'
 import ArticleCard from '../components/Articles/ArticleCard'
-import articles from '../data/articles.json'
+import { getArticles } from '../utils/articleStore'
 import { logEvent } from '../utils/eventLogger'
 
 export default function ArticleDetailPage() {
@@ -16,7 +16,9 @@ export default function ArticleDetailPage() {
   const { lang } = useLanguage()
   const [toast, setToast] = useState(false)
 
-  const article = useMemo(() => articles.find((a) => a.id === id), [id])
+  // Data artikel dari database (via localStorage) dengan fallback JSON.
+  const articles = useMemo(() => getArticles(), [])
+  const article = useMemo(() => articles.find((a) => a.id === id), [articles, id])
   useEffect(() => { window.scrollTo(0, 0); if (article) logEvent('article_view', article.id) }, [article])
 
   if (!article) {

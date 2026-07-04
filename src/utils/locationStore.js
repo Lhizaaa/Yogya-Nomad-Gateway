@@ -11,6 +11,32 @@ export function getLocations() {
   return seed
 }
 
+// Ambil data lokasi dari API database (READ-ONLY) lalu simpan ke localStorage,
+// supaya getLocations() berikutnya otomatis memakai data dari database.
+// Jika server mati / offline, fungsi ini fallback ke data yang sudah ada
+// (localStorage atau seed locations.json), jadi aplikasi tetap jalan.
+export async function fetchLocations() {
+  try {
+    // Timeout 3 detik agar startup tidak menggantung saat server tidak aktif.
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 3000)
+    const res = await fetch('/api/destinations', { signal: controller.signal })
+    clearTimeout(timer)
+
+    if (!res.ok) throw new Error(`status ${res.status}`)
+    const data = await res.json()
+
+    if (Array.isArray(data.destinations) && data.destinations.length) {
+      saveLocations(data.destinations)
+      return data.destinations
+    }
+    throw new Error('data kosong')
+  } catch {
+    // Fallback: pakai data lokal yang sudah ada (offline-friendly / PWA).
+    return getLocations()
+  }
+}
+
 export function saveLocations(list) {
   try { localStorage.setItem(KEY, JSON.stringify(list)) } catch { /* ignore */ }
 }
