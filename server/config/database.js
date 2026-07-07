@@ -9,16 +9,30 @@ const { Pool } = pg
 
 // Buat pool koneksi. Pool otomatis mengelola beberapa koneksi sekaligus,
 // jadi lebih efisien daripada membuka koneksi baru di setiap request.
-const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT, 10) || 5432,
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'yogya_nomad_db',
-  max: 10, // maksimal 10 koneksi dalam pool
-  idleTimeoutMillis: 30000, // tutup koneksi idle setelah 30 detik
-  connectionTimeoutMillis: 5000, // gagal jika tidak konek dalam 5 detik
-})
+// Prioritas: DATABASE_URL (production Railway) → individual vars (development)
+console.log('[database] DEBUG: process.env.DATABASE_URL =', process.env.DATABASE_URL ? '(set)' : '(NOT set)')
+console.log('[database] DEBUG: process.env.DB_HOST =', process.env.DB_HOST || '(undefined)')
+
+const poolConfig = process.env.DATABASE_URL
+  ? {
+      connectionString: process.env.DATABASE_URL,
+      max: 10,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
+    }
+  : {
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT, 10) || 5432,
+      user: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'yogya_nomad_db',
+      max: 10,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 5000,
+    }
+
+console.log('[database] DEBUG: Using config:', process.env.DATABASE_URL ? 'DATABASE_URL' : 'Individual vars (localhost)')
+const pool = new Pool(poolConfig)
 
 // Tangani error tak terduga pada koneksi idle agar server tidak crash.
 pool.on('error', (err) => {
