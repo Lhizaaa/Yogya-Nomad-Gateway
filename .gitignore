@@ -4,6 +4,10 @@ dist-ssr
 .env
 .env.local
 .env.backup
+.env.development
+.env.production
+.env.development.local
+.env.production.local
 *.local
 # File backup lokal (buatan saat editing) — jangan di-commit
 *.backup
@@ -13,3 +17,24 @@ dist-ssr
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ============================================================================
+# Docker
+# ============================================================================
+.env                    # Development env (lokalisasi, tidak di-commit)
+.env.production         # Production env (sensitif, tidak di-commit ke git)
+.env.production.local   # Local override (tidak di-commit)
+
+# Database backups (simpan di safe location, jangan di-repo)
+*.sql
+*.sql.gz
+
+# Docker volumes (local data, tidak di-commit)
+postgres_data/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.iml
+.DS_Store

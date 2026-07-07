@@ -44,4 +44,5 @@ export async function testConnection() {
   }
 }
 
+export { pool }
 export default pool

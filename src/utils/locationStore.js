@@ -18,9 +18,10 @@ export function getLocations() {
 export async function fetchLocations() {
   try {
     // Timeout 3 detik agar startup tidak menggantung saat server tidak aktif.
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8787'
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 3000)
-    const res = await fetch('/api/destinations', { signal: controller.signal })
+    const res = await fetch(`${apiUrl}/api/destinations`, { signal: controller.signal })
     clearTimeout(timer)
 
     if (!res.ok) throw new Error(`status ${res.status}`)

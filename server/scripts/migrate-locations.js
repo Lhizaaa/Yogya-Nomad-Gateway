@@ -72,7 +72,7 @@ async function migrate() {
 
   // 2) Baca data sumber dari locations.json.
   const locations = JSON.parse(
-    readFileSync(join(__dirname, '..', '..', 'src', 'data', 'locations.json'), 'utf-8')
+    readFileSync(join(__dirname, '..', 'data', 'locations.json'), 'utf-8')
   )
   console.log(`[migrate] Membaca ${locations.length} lokasi dari locations.json.`)
 

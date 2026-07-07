@@ -45,7 +45,7 @@ async function migrate() {
   console.log('[migrate] Tabel "articles" siap.')
 
   const articles = JSON.parse(
-    readFileSync(join(__dirname, '..', '..', 'src', 'data', 'articles.json'), 'utf-8')
+    readFileSync(join(__dirname, '..', 'data', 'articles.json'), 'utf-8')
   )
   console.log(`[migrate] Membaca ${articles.length} artikel dari articles.json.`)
 

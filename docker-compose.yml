@@ -1,0 +1,111 @@
+# ============================================================================
+# docker-compose.yml — Orchestrate Backend API + PostgreSQL
+# ============================================================================
+
+services:
+  # ============================================================================
+  # PostgreSQL Database — Persistent storage
+  # ============================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: yogya_nomad_db
+
+    # Port: expose lokal untuk dev (comment di production)
+    ports:
+      - "5432:5432"
+
+    # Environment variables
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}  # Default jika tidak di-set
+      POSTGRES_DB: yogya_nomad_db
+
+    # Volume: persistent storage (data tetap setelah container stop)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    # Health check — pastikan DB siap sebelum API start
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+    # Network
+    networks:
+      - internal
+
+    # Restart policy
+    restart: unless-stopped
+
+  # ============================================================================
+  # Express Backend API
+  # ============================================================================
+  api:
+    # Build dari Dockerfile di root
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: yogya_nomad_api
+
+    # Tunggu postgres siap (health check) sebelum start
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    # Port: expose 8787 ke lokal
+    ports:
+      - "8787:8787"
+
+    # Environment variables
+    environment:
+      # Database
+      DB_HOST: postgres              # Nama service di docker-compose
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: yogya_nomad_db
+
+      # Server
+      PORT: 8787
+      NODE_ENV: production
+
+      # OpenAI (HARUS di-set saat deploy)
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_MODEL: gpt-4o-mini
+
+    # Volumes (code sync & preserve node_modules)
+    volumes:
+      - ./server:/app                 # Sync code untuk dev
+      - /app/node_modules             # Preserve node_modules (built in container)
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8787/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+    # Network
+    networks:
+      - internal
+
+    # Restart policy
+    restart: unless-stopped
+
+# ============================================================================
+# Volumes — Persistent storage
+# ============================================================================
+volumes:
+  postgres_data:
+    driver: local
+
+# ============================================================================
+# Networks — Internal communication
+# ============================================================================
+networks:
+  internal:
+    driver: bridge

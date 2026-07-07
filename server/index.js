@@ -1,15 +1,10 @@
 import 'dotenv/config'
-import { readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
-import { dirname, join } from 'node:path'
 import express from 'express'
 import cors from 'cors'
 import OpenAI from 'openai'
 import destinationsRouter from './routes/destinations.js'
 import articlesRouter from './routes/articles.js'
-import { testConnection } from './config/database.js'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
+import { testConnection, pool } from './config/database.js'
 
 const PORT = process.env.PORT || 8787
 const MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
@@ -21,10 +16,19 @@ if (!process.env.OPENAI_API_KEY) {
 
 const client = new OpenAI() // membaca OPENAI_API_KEY dari environment
 
-// Muat data lokasi asli supaya chatbot bisa merekomendasikan spot yang benar-benar ada.
-const locations = JSON.parse(
-  readFileSync(join(__dirname, '..', 'src', 'data', 'locations.json'), 'utf-8')
-)
+// Muat data lokasi dari database PostgreSQL supaya chatbot bisa merekomendasikan spot yang benar-benar ada.
+let locations = []
+
+async function loadLocations() {
+  try {
+    const result = await pool.query('SELECT * FROM destinations ORDER BY id')
+    locations = result.rows
+    console.log(`[Loaded] ${locations.length} lokasi dari database`)
+  } catch (err) {
+    console.error('[loadLocations] error:', err?.message || err)
+    locations = []
+  }
+}
 
 // ---------------------------------------------------------------------------
 // SYSTEM PROMPT — chatbot serba-tahu Kulon Progo (terkunci pada topik Kulon Progo)
@@ -74,7 +78,21 @@ function sseStart(res) {
 }
 
 const app = express()
-app.use(cors())
+
+// CORS configuration — whitelist origins untuk security
+app.use(cors({
+  origin: [
+    'http://localhost:5173',           // Vite dev (port default)
+    'http://localhost:3000',           // Alternative dev port
+    'http://localhost:8787',           // Backend sendiri (lokal)
+    'https://*.vercel.app',            // Vercel preview & production
+    'https://yogya-nomad-gateway.vercel.app'  // Production domain (ganti nanti)
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}))
+
 app.use(express.json({ limit: '1mb' }))
 
 // Health check: cek status server AI + koneksi database (READ-ONLY).
@@ -233,5 +251,7 @@ app.listen(PORT, async () => {
   console.log(`[Nomad Assistant] Model: ${MODEL}`)
   // Cek koneksi database saat start (tidak meng-crash server jika gagal).
   await testConnection()
+  // Load locations dari database untuk AI chatbot
+  await loadLocations()
   console.log('')
 })
