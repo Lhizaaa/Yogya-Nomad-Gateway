@@ -7,17 +7,15 @@ import pg from 'pg'
 
 const { Pool } = pg
 
-// Buat pool koneksi. Pool otomatis mengelola beberapa koneksi sekaligus,
-// jadi lebih efisien daripada membuka koneksi baru di setiap request.
-// Prioritas: DATABASE_URL (production Railway) → individual vars (development)
-const poolConfig = process.env.DATABASE_URL
-  ? {
+// Buat pool koneksi dengan DATABASE_URL (production) atau individual vars (development)
+const pool = process.env.DATABASE_URL
+  ? new Pool({
       connectionString: process.env.DATABASE_URL,
       max: 10,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,
-    }
-  : {
+    })
+  : new Pool({
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT, 10) || 5432,
       user: process.env.DB_USER || 'postgres',
@@ -26,9 +24,7 @@ const poolConfig = process.env.DATABASE_URL
       max: 10,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,
-    }
-
-const pool = new Pool(poolConfig)
+    })
 
 // Tangani error tak terduga pada koneksi idle agar server tidak crash.
 pool.on('error', (err) => {
