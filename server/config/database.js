@@ -18,11 +18,11 @@ const pool = process.env.DATABASE_URL
       connectionTimeoutMillis: 5000,
     })
   : new Pool({
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT, 10) || 5432,
-      user: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'yogya_nomad_db',
+      host: process.env.PGHOST || process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.PGPORT || process.env.DB_PORT || 5432, 10),
+      user: process.env.PGUSER || process.env.DB_USER || 'postgres',
+      password: process.env.PGPASSWORD || process.env.DB_PASSWORD || '',
+      database: process.env.PGDATABASE || process.env.DB_NAME || 'yogya_nomad_db',
       max: 10,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,
