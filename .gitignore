@@ -38,3 +38,5 @@ postgres_data/
 .idea/
 *.iml
 .DS_Store
+.vercel
+.env*

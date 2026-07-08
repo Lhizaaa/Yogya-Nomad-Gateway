@@ -11,8 +11,9 @@ services:
     container_name: yogya_nomad_db
 
     # Port: expose lokal untuk dev (comment di production)
+    # Host port 5433 dipakai (bukan 5432) karena 5432 sudah dipakai PostgreSQL native di Windows
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
     # Environment variables
     environment:

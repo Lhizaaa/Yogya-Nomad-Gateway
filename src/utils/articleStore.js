@@ -21,7 +21,8 @@ function saveArticles(list) {
 // Jika server mati / offline, fallback ke data lokal (offline-friendly / PWA).
 export async function fetchArticles() {
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8787'
+    // Default '' (relatif) karena frontend & backend (Vercel Functions) satu domain.
+    const apiUrl = import.meta.env.VITE_API_URL || ''
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 3000)
     const res = await fetch(`${apiUrl}/api/articles`, { signal: controller.signal })

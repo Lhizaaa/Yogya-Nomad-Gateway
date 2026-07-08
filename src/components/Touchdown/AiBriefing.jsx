@@ -40,10 +40,11 @@ export default function AiBriefing({ budget, workspace }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ budget, workspace, lang })
         })
-        if (!res.ok) throw new Error('bad response')
+        if (!res.ok) throw new Error(`bad response: ${res.status}`)
         const data = await res.json()
         if (!cancelled) setText(data.text)
-      } catch {
+      } catch (err) {
+        console.error('[AiBriefing] fetch error:', err)
         if (!cancelled) setError(true)
       } finally {
         if (!cancelled) setLoading(false)

@@ -26,6 +26,15 @@ function renderApp() {
   )
 }
 
+// Dev mode: lepas service worker PWA lama (dari sesi/build sebelumnya) yang
+// bisa nyangkut di origin ini dan mem-intercept fetch ke /api/*, membuat
+// request AI (chat/touchdown/itinerary) gagal walau backend sehat.
+if (import.meta.env.DEV && 'serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then((regs) => {
+    regs.forEach((reg) => reg.unregister())
+  })
+}
+
 // Muat data lokasi & artikel dari database (READ-ONLY) sebelum render agar
 // seluruh halaman langsung memakai data terbaru. Kedua fetch sudah menangani
 // fallback ke JSON bila server tidak aktif / offline, jadi render dijamin
