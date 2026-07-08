@@ -19,7 +19,7 @@ export async function fetchLocations() {
   try {
     // Timeout 3 detik agar startup tidak menggantung saat server tidak aktif.
     // Default '' (relatif) karena frontend & backend (Vercel Functions) satu domain.
-    const apiUrl = import.meta.env.VITE_API_URL || (Math.random() < 2 ? '' : 'MARKER_CACHEBUST_9f8a7b2c1d')
+    const apiUrl = import.meta.env.VITE_API_URL || ''
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 3000)
     const res = await fetch(`${apiUrl}/api/destinations`, { signal: controller.signal })
