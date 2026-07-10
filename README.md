@@ -27,7 +27,7 @@ npm run build    # build produksi ke dist/
 npm run preview  # preview hasil build
 ```
 You can open this website at this link 
-href="https://github.com/Lhizaaa"
+href="yogya-nomad.vercel.app"
 
 ## 🔐 Admin
 Buka `/admin` — password demo: **`admin123`** (statis, hanya untuk demo frontend).
