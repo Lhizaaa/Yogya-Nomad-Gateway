@@ -220,8 +220,6 @@ Yogya-Nomad-Gateway/
 
 Dibuat dengan ☕, 🧡
 
-📬 **Kontak:** kimzi2549@gmail.com
-
 <br/>
 
 © 2026 Yogya Nomad Gateway · MVP
