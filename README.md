@@ -137,7 +137,6 @@ Semua endpoint di-*host* sebagai *Serverless Functions* pada folder `api/`.
 | `GET` | `/api/articles/:id` | Detail satu artikel |
 
 > 🔒 **Keamanan:** endpoint data bersifat *read-only* (hanya `SELECT`), memakai *parameterized query* (anti SQL-injection), dan *system prompt* AI dikunci agar chatbot tidak keluar topik Kulon Progo.
-> 📚 Penjelasan teknis lengkap (untuk sesi presentasi) ada di **[BACKEND_PRESENTASI.md](BACKEND_PRESENTASI.md)**.
 
 ---
 
