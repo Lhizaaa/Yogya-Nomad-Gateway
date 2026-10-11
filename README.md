@@ -214,9 +214,6 @@ Yogya-Nomad-Gateway/
 
 <div align="center">
 
-### 🎓 Informatics EXPO UII 2026
-**Pengembangan Sistem Informasi (PSI) · Universitas Islam Indonesia**
-
 Dibuat dengan ☕, 🧡
 
 <br/>
